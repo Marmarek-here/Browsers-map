@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browsers Genealogy Map</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <style>
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            display: flex; 
+            height: 100vh; 
+            background: #0f172a; 
+            color: #f8fafc; 
+            overflow: hidden;
+        }
+        #cy { 
+            flex-grow: 1; 
+            height: 100%; 
+        }
+        #sidebar { 
+            width: 350px; 
+            background: #1e293b; 
+            padding: 25px; 
+            box-shadow: -5px 0 15px rgba(0,0,0,0.3); 
+            overflow-y: auto; 
+            display: none;
+            border-left: 1px solid #334155;
+        }
+        #sidebar h2 { color: #38bdf8; margin-top: 0; }
+        #sidebar a { color: #38bdf8; text-decoration: none; font-weight: bold; }
+        #sidebar a:hover { text-decoration: underline; }
+        
+        .btn-add { 
+            position: absolute; 
+            bottom: 20px; 
+            left: 20px; 
+            padding: 12px 24px; 
+            background: #38bdf8; 
+            color: #0f172a; 
+            border: none; 
+            cursor: pointer; 
+            border-radius: 8px; 
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .btn-add:hover { background: #7dd3fc; }
+        
+        #placeholder {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #475569;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="placeholder">Click on a browser to see details</div>
+    <div id="cy"></div>
+    
+    <div id="sidebar">
+        <h2 id="title">Browser Name</h2>
+        <div id="content">Loading information...</div>
+    </div>
+
+    <button class="btn-add" onclick="window.open('https://github.com/Marmarek-here/Browsers-Map/issues')">
+        Suggest a Browser
+    </button>
+
+    <script>
+        async function init() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+
+                const cy = cytoscape({
+                    container: document.getElementById('cy'),
+                    elements: data,
+                    style: [
+                        {
+                            selector: 'node',
+                            style: {
+                                'background-color': '#38bdf8',
+                                'label': 'data(label)',
+                                'color': '#f8fafc',
+                                'text-valign': 'bottom',
+                                'text-margin-y': 8,
+                                'width': 45,
+                                'height': 45,
+                                'font-size': '12px'
+                            }
+                        },
+                        {
+                            selector: 'edge',
+                            style: {
+                                'width': 2,
+                                'line-color': '#475569',
+                                'target-arrow-color': '#475569',
+                                'target-arrow-shape': 'triangle',
+                                'curve-style': 'bezier'
+                            }
+                        },
+                        {
+                            selector: 'node:selected',
+                            style: {
+                                'background-color': '#fbbf24',
+                                'line-color': '#fbbf24'
+                            }
+                        }
+                    ],
+                    layout: { 
+                        name: 'breadthfirst', 
+                        directed: true, 
+                        padding: 50,
+                        spacingFactor: 1.2
+                    }
+                });
+
+                cy.on('tap', 'node', async function(evt){
+                    const node = evt.target;
+                    const wikiPage = node.data('wiki');
+                    
+                    document.getElementById('placeholder').style.display = 'none';
+                    document.getElementById('sidebar').style.display = 'block';
+                    document.getElementById('title').innerText = node.data('label');
+                    document.getElementById('content').innerHTML = 'Loading from Wikipedia...';
+                    
+                    const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiPage}`;
+                    try {
+                        const res = await fetch(wikiUrl);
+                        const info = await res.json();
+                        document.getElementById('content').innerHTML = `
+                            <p>${info.extract || 'No description available.'}</p>
+                            <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;">
+                            <a href="${info.content_urls.desktop.page}" target="_blank">Read more on Wikipedia →</a>
+                        `;
+                    } catch (e) {
+                        document.getElementById('content').innerText = 'Failed to load Wikipedia data.';
+                    }
+                });
+            } catch (error) {
+                console.error('Error loading data.json:', error);
+            }
+        }
+
+        init();
+    </script>
+</body>
+</html>
