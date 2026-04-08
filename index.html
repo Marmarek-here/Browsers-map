@@ -20,15 +20,37 @@
             height: 100%; 
         }
         #sidebar { 
-            width: 350px; 
+            width: 380px; 
             background: #1e293b; 
-            padding: 25px; 
-            box-shadow: -5px 0 15px rgba(0,0,0,0.3); 
+            padding: 30px; 
+            box-shadow: -5px 0 20px rgba(0,0,0,0.4); 
             overflow-y: auto; 
             display: none;
             border-left: 1px solid #334155;
+            transition: all 0.3s ease;
         }
-        #sidebar h2 { color: #38bdf8; margin-top: 0; }
+        
+        #sidebar-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #334155;
+        }
+        #sidebar-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 15px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        #title { 
+            color: #38bdf8; 
+            margin: 0; 
+            font-size: 1.5em;
+        }
+
         #sidebar a { color: #38bdf8; text-decoration: none; font-weight: bold; }
         #sidebar a:hover { text-decoration: underline; }
         
@@ -44,6 +66,7 @@
             border-radius: 8px; 
             font-weight: bold;
             transition: background 0.3s;
+            z-index: 10;
         }
         .btn-add:hover { background: #7dd3fc; }
         
@@ -54,6 +77,7 @@
             transform: translate(-50%, -50%);
             color: #475569;
             pointer-events: none;
+            font-size: 1.2em;
         }
     </style>
 </head>
@@ -63,7 +87,10 @@
     <div id="cy"></div>
     
     <div id="sidebar">
-        <h2 id="title">Browser Name</h2>
+        <div id="sidebar-header">
+            <div id="sidebar-icon"></div>
+            <h2 id="title">Browser Name</h2>
+        </div>
         <div id="content">Loading information...</div>
     </div>
 
@@ -72,6 +99,11 @@
     </button>
 
     <script>
+        // Функция для генерации ссылки на иконку
+        function getIconUrl(siteUrl) {
+            return `https://www.google.com/s2/favicons?sz=128&domain_url=${siteUrl}`;
+        }
+
         async function init() {
             try {
                 const response = await fetch('data.json');
@@ -84,14 +116,23 @@
                         {
                             selector: 'node',
                             style: {
-                                'background-color': '#38bdf8',
                                 'label': 'data(label)',
                                 'color': '#f8fafc',
                                 'text-valign': 'bottom',
                                 'text-margin-y': 8,
-                                'width': 45,
-                                'height': 45,
-                                'font-size': '12px'
+                                'font-size': '11px',
+                                'text-wrap': 'wrap',
+                                'text-max-width': '80px',
+                                
+                                // НАСТРОЙКИ ИКОНОК
+                                'width': 50, // Чуть меньше, чтобы фавиконки не мылились
+                                'height': 50,
+                                // Используем функцию для динамического получения иконки
+                                'background-image': function(node) { return getIconUrl(node.data('url')); },
+                                'background-fit': 'contain',
+                                'background-clip': 'node',
+                                'background-opacity': 0,
+                                'border-width': 0
                             }
                         },
                         {
@@ -101,14 +142,17 @@
                                 'line-color': '#475569',
                                 'target-arrow-color': '#475569',
                                 'target-arrow-shape': 'triangle',
-                                'curve-style': 'bezier'
+                                'curve-style': 'bezier',
+                                'opacity': 0.6
                             }
                         },
                         {
                             selector: 'node:selected',
                             style: {
                                 'background-color': '#fbbf24',
-                                'line-color': '#fbbf24'
+                                'background-opacity': 0.2,
+                                'border-width': 2,
+                                'border-color': '#fbbf24'
                             }
                         }
                     ],
@@ -116,17 +160,21 @@
                         name: 'breadthfirst', 
                         directed: true, 
                         padding: 50,
-                        spacingFactor: 1.2
+                        spacingFactor: 1.3
                     }
                 });
 
                 cy.on('tap', 'node', async function(evt){
                     const node = evt.target;
                     const wikiPage = node.data('wiki');
+                    // Генерируем иконку для сайдбара
+                    const iconPath = getIconUrl(node.data('url'));
                     
                     document.getElementById('placeholder').style.display = 'none';
                     document.getElementById('sidebar').style.display = 'block';
                     document.getElementById('title').innerText = node.data('label');
+                    
+                    document.getElementById('sidebar-icon').style.backgroundImage = `url(${iconPath})`;
                     document.getElementById('content').innerHTML = 'Loading from Wikipedia...';
                     
                     const wikiUrl = `https://en.wikipedia.org/api/rest_v1/page/summary/${wikiPage}`;
@@ -144,6 +192,7 @@
                 });
             } catch (error) {
                 console.error('Error loading data.json:', error);
+                document.getElementById('placeholder').innerText = 'Error loading map data.';
             }
         }
 
