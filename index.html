@@ -197,11 +197,11 @@
         const nodeColors = {
             chromium: '#38bdf8', chrome: '#38bdf8', brave: '#38bdf8',
             edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8',
-            ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8',
+            ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8', arc: '#38bdf8',
             gecko: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
-            librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa',
+            librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa', zen: '#a78bfa',
             netscape: '#a78bfa',
-            webkit: '#34d399', safari: '#34d399',
+            webkit: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399',
             ladybird: '#f59e0b', netsurf: '#f59e0b', flow: '#f59e0b', dillo: '#f59e0b',
             mosaic: '#94a3b8', ie: '#94a3b8',
         };
@@ -209,11 +209,11 @@
         const engineLabels = {
             chromium: 'Blink', chrome: 'Blink', brave: 'Blink',
             edge: 'Blink', opera: 'Blink', vivaldi: 'Blink',
-            ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink',
+            ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink', arc: 'Blink',
             gecko: 'Gecko engine', firefox: 'Gecko', tor: 'Gecko',
-            librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna',
+            librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', zen: 'Gecko',
             netscape: 'Gecko/Trident',
-            webkit: 'WebKit engine', safari: 'WebKit',
+            webkit: 'WebKit engine', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine',
             ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
             mosaic: 'NCSA Mosaic', ie: 'Trident',
         };
@@ -309,7 +309,11 @@
                         padding: 60,
                         spacingFactor: 1.4,
                         avoidOverlap: true,
-                    }
+                    },
+                    userZoomingEnabled: true,
+                    wheelSensitivity: 0.1,
+                    minZoom: 0.1,
+                    maxZoom: 3
                 });
 
                 cy.on('tap', 'node', async function(evt) {
