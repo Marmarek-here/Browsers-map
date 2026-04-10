@@ -1,87 +1,778 @@
 {
   "nodes": [
-    { "data": { "id": "mosaic", "label": "Mosaic", "wiki": "Mosaic_(web_browser)", "url": "https://ncsa.illinois.edu", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Mosaic.png/128px-Mosaic.png", "author": "NCSA" } },
-    { "data": { "id": "netscape", "label": "Netscape Navigator", "wiki": "Netscape_Navigator", "url": "https://browser.netscape.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Netscape_icon.png/128px-Netscape_icon.png", "author": "Netscape Communications" } },
-    { "data": { "id": "trident", "label": "Trident", "wiki": "Trident_(software)", "url": "https://en.wikipedia.org/wiki/Trident_(software)", "logo": "", "author": "Microsoft" } },
-    { "data": { "id": "edgehtml", "label": "EdgeHTML", "wiki": "EdgeHTML", "url": "https://en.wikipedia.org/wiki/EdgeHTML", "logo": "", "author": "Microsoft" } },
-    { "data": { "id": "ie", "label": "Internet Explorer", "wiki": "Internet_Explorer", "url": "https://microsoft.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Internet_Explorer_11_logo.svg/128px-Internet_Explorer_11_logo.svg.png", "author": "Microsoft" } },
-    { "data": { "id": "edge-legacy", "label": "Edge (Legacy)", "wiki": "", "url": "https://microsoft.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/128px-Microsoft_Edge_logo_%282019%29.svg.png", "noWiki": true, "wikiNote": "Microsoft Edge Legacy was the original version of Microsoft Edge that used the EdgeHTML engine. It was discontinued in 2021 and replaced by the Chromium-based Microsoft Edge.", "wikiUrl": "https://en.wikipedia.org/wiki/Microsoft_Edge", "author": "Microsoft" } },
-    { "data": { "id": "konqueror", "label": "Konqueror", "wiki": "Konqueror", "url": "https://konqueror.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Konqueror_1.png/128px-Konqueror_1.png", "author": "KDE" } },
-    { "data": { "id": "khtml", "label": "KHTML", "wiki": "KHTML", "url": "https://en.wikipedia.org/wiki/KHTML", "logo": "", "author": "KDE" } },
-    { "data": { "id": "gecko", "label": "Gecko Engine", "wiki": "Gecko_(software)", "url": "https://mozilla.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Gecko_logo.svg/128px-Gecko_logo.svg.png", "author": "Mozilla" } },
-    { "data": { "id": "firefox", "label": "Firefox", "wiki": "Firefox", "url": "https://mozilla.org/firefox", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/128px-Firefox_logo%2C_2019.svg.png", "author": "Mozilla" } },
-    { "data": { "id": "tor", "label": "Tor Browser", "wiki": "Tor_Browser", "url": "https://torproject.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Tor_logo.svg/128px-Tor_logo.svg.png", "author": "The Tor Project" } },
-    { "data": { "id": "librewolf", "label": "LibreWolf", "wiki": "LibreWolf", "url": "https://librewolf.net", "logo": "https://librewolf.net/logo.svg", "author": "LibreWolf Community" } },
-    { "data": { "id": "mullvad", "label": "Mullvad Browser", "wiki": "Mullvad#Browser", "url": "https://mullvad.net/en/browser", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mullvad_logo.svg/128px-Mullvad_logo.svg.png", "author": "Mullvad VPN" } },
-    { "data": { "id": "palemoon", "label": "Pale Moon", "wiki": "Pale_Moon_(web_browser)", "url": "https://palemoon.org", "logo": "https://www.palemoon.org/palemoon-icon.svg", "author": "Moonchild Productions" } },
-    { "data": { "id": "presto", "label": "Presto", "wiki": "Presto_(browser_engine)", "url": "https://en.wikipedia.org/wiki/Presto_(browser_engine)", "logo": "", "author": "Opera Software" } },
-    { "data": { "id": "opera-presto", "label": "Opera (<2013)", "wiki": "", "url": "https://opera.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Opera_browser_logo.svg/128px-Opera_browser_logo.svg.png", "noWiki": true, "wikiNote": "Opera Presto refers to versions of the Opera browser released before 2013 that used the Presto rendering engine, which was developed by Opera Software. Presto was known for its speed and standards compliance before Opera switched to Blink in 2013.", "wikiUrl": "https://en.wikipedia.org/wiki/Opera_(web_browser)", "author": "Opera Software" } },
-    { "data": { "id": "zen", "label": "Zen Browser", "wiki": "Zen_Browser", "url": "https://zen-browser.app", "logo": "https://zen-browser.app/icon.svg", "author": "Zen Community" } },
-    { "data": { "id": "icecat", "label": "GNU IceCat", "wiki": "GNU_IceCat", "url": "https://www.gnu.org/software/gnuzilla/", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/GNU_IceCat_logo.svg/128px-GNU_IceCat_logo.svg.png", "author": "GNU Project" } },
-    { "data": { "id": "waterfox", "label": "Waterfox", "wiki": "Waterfox", "url": "https://www.waterfox.net", "logo": "https://www.waterfox.net/img/waterfox-32.png", "author": "Waterfox Ltd" } },
-    { "data": { "id": "webkit", "label": "WebKit", "wiki": "WebKit", "url": "https://webkit.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WebKit_logo.svg/128px-WebKit_logo.svg.png", "author": "Apple / KDE" } },
-    { "data": { "id": "blink", "label": "Blink", "wiki": "Blink_(browser_engine)", "url": "https://en.wikipedia.org/wiki/Blink_(browser_engine)", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Chromium_Logo.svg/128px-Chromium_Logo.svg.png", "author": "Google / Chromium Project" } },
-    { "data": { "id": "safari", "label": "Safari", "wiki": "Safari_(web_browser)", "url": "https://apple.com/safari", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/128px-Safari_browser_logo.svg.png", "author": "Apple" } },
-    { "data": { "id": "chromium", "label": "Chromium", "wiki": "Chromium_(web_browser)", "url": "https://chromium.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Chromium_Logo.svg/128px-Chromium_Logo.svg.png", "author": "Google / Chromium Project" } },
-    { "data": { "id": "chrome", "label": "Google Chrome", "wiki": "Google_Chrome", "url": "https://google.com/chrome", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/128px-Google_Chrome_icon_%28September_2014%29.svg.png", "author": "Google" } },
-    { "data": { "id": "brave", "label": "Brave", "wiki": "Brave_(web_browser)", "url": "https://brave.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Brave_logo.svg/128px-Brave_logo.svg.png", "author": "Brave Software" } },
-    { "data": { "id": "edge", "label": "Microsoft Edge", "wiki": "Microsoft_Edge", "url": "https://microsoft.com/edge", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/128px-Microsoft_Edge_logo_%282019%29.svg.png", "author": "Microsoft" } },
-    { "data": { "id": "opera", "label": "Opera", "wiki": "Opera_(web_browser)", "url": "https://opera.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Opera_browser_logo.svg/128px-Opera_browser_logo.svg.png", "author": "Opera Software" } },
-    { "data": { "id": "vivaldi", "label": "Vivaldi", "wiki": "Vivaldi_(web_browser)", "url": "https://vivaldi.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Vivaldi_Browser_Logo.svg/128px-Vivaldi_Browser_Logo.svg.png", "author": "Vivaldi Technologies" } },
-    { "data": { "id": "arc", "label": "Arc", "wiki": "Arc_(web_browser)", "url": "https://arc.net", "logo": "https://arc.net/favicon.ico", "author": "The Browser Company" } },
-    { "data": { "id": "kiwi", "label": "Kiwi Browser", "wiki": "", "url": "https://thekiwibrowser.com", "logo": "https://thekiwibrowser.com/media/logo-256.png", "noWiki": true, "wikiNote": "Kiwi Browser is a Chromium-based web browser focused on privacy and ad-blocking features.", "wikiUrl": "https://thekiwibrowser.com/", "author": "Geometry OU" } },
-    { "data": { "id": "min", "label": "Min", "wiki": "", "url": "https://minbrowser.org", "logo": "https://minbrowser.org/assets/images/icon-128.png", "noWiki": true, "wikiNote": "Min is a fast, minimal browser that protects your privacy.", "wikiUrl": "https://minbrowser.org", "author": "Min Contributors" } },
-    { "data": { "id": "samsung", "label": "Samsung Internet", "wiki": "Samsung_Internet", "url": "https://samsung.com", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Samsung_Internet_Logo.svg/128px-Samsung_Internet_Logo.svg.png", "author": "Samsung" } },
-    { "data": { "id": "ungoogled", "label": "Ungoogled Chromium", "wiki": "Ungoogled_Chromium", "url": "https://ungoogled-software.github.io", "logo": "https://avatars.githubusercontent.com/u/31232658?s=128", "logoFallback": "https://avatars.githubusercontent.com/u/31232658?s=128", "author": "Ungoogled Software" } },
-    { "data": { "id": "bromite", "label": "Bromite", "wiki": "", "url": "https://www.bromite.org", "logo": "https://www.bromite.org/static/bromite_icon_128.png", "noWiki": true, "wikiNote": "Bromite is an open-source web browser for Android based on Chromium. It is designed to provide a clutter-free browsing experience with a focus on privacy and security. The project implements a built-in ad-blocking engine and numerous patches to prevent browser fingerprinting and remove Google-specific telemetry. While historically significant as a leading privacy fork of Chromium, its development cycle became irregular in later years.", "wikiUrl": "https://www.bromite.org", "author": "Romeo Masci" } },
-    { "data": { "id": "cromite", "label": "Cromite", "wiki": "", "url": "https://github.com/uazo/cromite", "logo": "https://raw.githubusercontent.com/uazo/cromite/master/build/android/chrome/res/drawable-hdpi/app_icon.png", "noWiki": true, "wikiNote": "Cromite is an open-source Chromium fork for Android, developed as a direct successor to the Bromite project. It continues the mission of providing a privacy-hardened browsing experience by integrating Bromite's original security patches while ensuring more frequent updates synchronized with the upstream Chromium releases. It is currently recognized as the primary maintained alternative for users seeking the features of the original Bromite on modern systems.", "wikiUrl": "https://github.com/uazo/cromite", "author": "uazo" } },
-    { "data": { "id": "ladybird", "label": "Ladybird", "wiki": "Ladybird_(web_browser)", "url": "https://ladybird.org", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ladybird_web_browser_logo.svg/128px-Ladybird_web_browser_logo.svg.png", "author": "Ladybird Project" } },
-    { "data": { "id": "netsurf", "label": "NetSurf", "wiki": "NetSurf", "url": "https://www.netsurf-browser.org", "logo": "https://www.netsurf-browser.org/images/netsurf-logo.png", "author": "NetSurf Team" } },
-    { "data": { "id": "flow", "label": "Flow Browser", "wiki": "Flow_(web_browser)", "url": "https://www.ekioh.com/flow-browser/", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flow_browser_icon.png/128px-Flow_browser_icon.png", "author": "Ekioh" } },
-    { "data": { "id": "dillo", "label": "Dillo", "wiki": "Dillo", "url": "https://dillo-browser.github.io", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Dillo_logo.svg/128px-Dillo_logo.svg.png", "author": "Dillo Project" } },
-    { "data": { "id": "android-webview", "label": "Android WebView", "wiki": "Android_WebView", "url": "https://developer.android.com/reference/android/webkit/WebView", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Android_logo_2019.svg/128px-Android_logo_2019.svg.png", "author": "Google" } },
-    { "data": { "id": "ios-wkwebview", "label": "iOS WKWebView", "wiki": "WKWebView", "url": "https://developer.apple.com/documentation/webkit/wkwebview", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/128px-Apple_logo_black.svg.png", "author": "Apple" } },
-    { "data": { "id": "macos-webview", "label": "macOS WebView (legacy)", "wiki": "WebKit", "url": "https://developer.apple.com/documentation/webkit", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/128px-Apple_logo_black.svg.png", "author": "Apple" } },
-    { "data": { "id": "windows-webview2", "label": "Windows WebView2", "wiki": "", "url": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png", "noWiki": true, "wikiNote": "WebView2 is a component that allows embedding web content in native Windows applications using the Microsoft Edge rendering engine, providing a modern web experience for desktop apps.", "wikiUrl": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/", "author": "Microsoft" } },
-    { "data": { "id": "windows-webbrowser", "label": "Windows WebBrowser (legacy)", "wiki": "WebBrowser_control", "url": "https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.webbrowser", "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png", "author": "Microsoft" } }
+    {
+      "data": {
+        "id": "mosaic",
+        "label": "Mosaic",
+        "wiki": "Mosaic_(web_browser)",
+        "url": "https://ncsa.illinois.edu",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Mosaic.png/128px-Mosaic.png",
+        "author": "NCSA",
+        "currentVersion": "Discontinued",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "netscape",
+        "label": "Netscape Navigator",
+        "wiki": "Netscape_Navigator",
+        "url": "https://browser.netscape.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Netscape_icon.png/128px-Netscape_icon.png",
+        "author": "Netscape Communications",
+        "currentVersion": "Discontinued",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "trident",
+        "label": "Trident",
+        "wiki": "Trident_(software)",
+        "url": "https://en.wikipedia.org/wiki/Trident_(software)",
+        "logo": "",
+        "author": "Microsoft",
+        "currentVersion": "Engine only",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "edgehtml",
+        "label": "EdgeHTML",
+        "wiki": "EdgeHTML",
+        "url": "https://en.wikipedia.org/wiki/EdgeHTML",
+        "logo": "",
+        "author": "Microsoft",
+        "currentVersion": "Engine only",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "ie",
+        "label": "Internet Explorer",
+        "wiki": "Internet_Explorer",
+        "url": "https://microsoft.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Internet_Explorer_11_logo.svg/128px-Internet_Explorer_11_logo.svg.png",
+        "author": "Microsoft",
+        "currentVersion": "11 (final)",
+        "eol": "EoL (2022)"
+      }
+    },
+    {
+      "data": {
+        "id": "edge-legacy",
+        "label": "Edge (Legacy)",
+        "wiki": "",
+        "url": "https://microsoft.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/128px-Microsoft_Edge_logo_%282019%29.svg.png",
+        "noWiki": true,
+        "wikiNote": "Microsoft Edge Legacy was the original version of Microsoft Edge that used the EdgeHTML engine. It was discontinued in 2021 and replaced by the Chromium-based Microsoft Edge.",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Microsoft_Edge",
+        "author": "Microsoft",
+        "currentVersion": "44 (final)",
+        "eol": "EoL (2021)"
+      }
+    },
+    {
+      "data": {
+        "id": "konqueror",
+        "label": "Konqueror",
+        "wiki": "Konqueror",
+        "url": "https://konqueror.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Konqueror_1.png/128px-Konqueror_1.png",
+        "author": "KDE",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "khtml",
+        "label": "KHTML",
+        "wiki": "KHTML",
+        "url": "https://en.wikipedia.org/wiki/KHTML",
+        "logo": "",
+        "author": "KDE",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "gecko",
+        "label": "Gecko Engine",
+        "wiki": "Gecko_(software)",
+        "url": "https://mozilla.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Gecko_logo.svg/128px-Gecko_logo.svg.png",
+        "author": "Mozilla",
+        "currentVersion": "Engine component",
+        "eol": "Varies by embedding app"
+      }
+    },
+    {
+      "data": {
+        "id": "firefox",
+        "label": "Firefox",
+        "wiki": "Firefox",
+        "url": "https://mozilla.org/firefox",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/128px-Firefox_logo%2C_2019.svg.png",
+        "author": "Mozilla",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "tor",
+        "label": "Tor Browser",
+        "wiki": "Tor_Browser",
+        "url": "https://torproject.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Tor_logo.svg/128px-Tor_logo.svg.png",
+        "author": "The Tor Project",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "librewolf",
+        "label": "LibreWolf",
+        "wiki": "LibreWolf",
+        "url": "https://librewolf.net",
+        "logo": "https://librewolf.net/logo.svg",
+        "author": "LibreWolf Community",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "mullvad",
+        "label": "Mullvad Browser",
+        "wiki": "Mullvad#Browser",
+        "url": "https://mullvad.net/en/browser",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Mullvad_logo.svg/128px-Mullvad_logo.svg.png",
+        "author": "Mullvad VPN",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "palemoon",
+        "label": "Pale Moon",
+        "wiki": "Pale_Moon_(web_browser)",
+        "url": "https://palemoon.org",
+        "logo": "https://www.palemoon.org/palemoon-icon.svg",
+        "author": "Moonchild Productions",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "presto",
+        "label": "Presto",
+        "wiki": "Presto_(browser_engine)",
+        "url": "https://en.wikipedia.org/wiki/Presto_(browser_engine)",
+        "logo": "",
+        "author": "Opera Software",
+        "currentVersion": "Engine only",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "opera-presto",
+        "label": "Opera (<2013)",
+        "wiki": "",
+        "url": "https://opera.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Opera_browser_logo.svg/128px-Opera_browser_logo.svg.png",
+        "noWiki": true,
+        "wikiNote": "Opera Presto refers to versions of the Opera browser released before 2013 that used the Presto rendering engine, which was developed by Opera Software. Presto was known for its speed and standards compliance before Opera switched to Blink in 2013.",
+        "wikiUrl": "https://en.wikipedia.org/wiki/Opera_(web_browser)",
+        "author": "Opera Software",
+        "currentVersion": "12.18 (final)",
+        "eol": "EoL"
+      }
+    },
+    {
+      "data": {
+        "id": "zen",
+        "label": "Zen Browser",
+        "wiki": "Zen_Browser",
+        "url": "https://zen-browser.app",
+        "logo": "https://zen-browser.app/icon.svg",
+        "author": "Zen Community",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "icecat",
+        "label": "GNU IceCat",
+        "wiki": "GNU_IceCat",
+        "url": "https://www.gnu.org/software/gnuzilla/",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/GNU_IceCat_logo.svg/128px-GNU_IceCat_logo.svg.png",
+        "author": "GNU Project",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "waterfox",
+        "label": "Waterfox",
+        "wiki": "Waterfox",
+        "url": "https://www.waterfox.net",
+        "logo": "https://www.waterfox.net/img/waterfox-32.png",
+        "author": "Waterfox Ltd",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "webkit",
+        "label": "WebKit",
+        "wiki": "WebKit",
+        "url": "https://webkit.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WebKit_logo.svg/128px-WebKit_logo.svg.png",
+        "author": "Apple / KDE",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "blink",
+        "label": "Blink",
+        "wiki": "Blink_(browser_engine)",
+        "url": "https://en.wikipedia.org/wiki/Blink_(browser_engine)",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Chromium_Logo.svg/128px-Chromium_Logo.svg.png",
+        "author": "Google / Chromium Project",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "safari",
+        "label": "Safari",
+        "wiki": "Safari_(web_browser)",
+        "url": "https://apple.com/safari",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Safari_browser_logo.svg/128px-Safari_browser_logo.svg.png",
+        "author": "Apple",
+        "currentVersion": "Bundled with latest macOS/iOS",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "chromium",
+        "label": "Chromium",
+        "wiki": "Chromium_(web_browser)",
+        "url": "https://chromium.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Chromium_Logo.svg/128px-Chromium_Logo.svg.png",
+        "author": "Google / Chromium Project",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "chrome",
+        "label": "Google Chrome",
+        "wiki": "Google_Chrome",
+        "url": "https://google.com/chrome",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Google_Chrome_icon_%28September_2014%29.svg/128px-Google_Chrome_icon_%28September_2014%29.svg.png",
+        "author": "Google",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "brave",
+        "label": "Brave",
+        "wiki": "Brave_(web_browser)",
+        "url": "https://brave.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Brave_logo.svg/128px-Brave_logo.svg.png",
+        "author": "Brave Software",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "edge",
+        "label": "Microsoft Edge",
+        "wiki": "Microsoft_Edge",
+        "url": "https://microsoft.com/edge",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/Microsoft_Edge_logo_%282019%29.svg/128px-Microsoft_Edge_logo_%282019%29.svg.png",
+        "author": "Microsoft",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "opera",
+        "label": "Opera",
+        "wiki": "Opera_(web_browser)",
+        "url": "https://opera.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/Opera_browser_logo.svg/128px-Opera_browser_logo.svg.png",
+        "author": "Opera Software",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "vivaldi",
+        "label": "Vivaldi",
+        "wiki": "Vivaldi_(web_browser)",
+        "url": "https://vivaldi.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Vivaldi_Browser_Logo.svg/128px-Vivaldi_Browser_Logo.svg.png",
+        "author": "Vivaldi Technologies",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "arc",
+        "label": "Arc",
+        "wiki": "Arc_(web_browser)",
+        "url": "https://arc.net",
+        "logo": "https://arc.net/favicon.ico",
+        "author": "The Browser Company",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "kiwi",
+        "label": "Kiwi Browser",
+        "wiki": "",
+        "url": "https://thekiwibrowser.com",
+        "logo": "https://thekiwibrowser.com/media/logo-256.png",
+        "noWiki": true,
+        "wikiNote": "Kiwi Browser is a Chromium-based web browser focused on privacy and ad-blocking features.",
+        "wikiUrl": "https://thekiwibrowser.com/",
+        "author": "Geometry OU",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "min",
+        "label": "Min",
+        "wiki": "",
+        "url": "https://minbrowser.org",
+        "logo": "https://minbrowser.org/assets/images/icon-128.png",
+        "noWiki": true,
+        "wikiNote": "Min is a fast, minimal browser that protects your privacy.",
+        "wikiUrl": "https://minbrowser.org",
+        "author": "Min Contributors",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "samsung",
+        "label": "Samsung Internet",
+        "wiki": "Samsung_Internet",
+        "url": "https://samsung.com",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Samsung_Internet_Logo.svg/128px-Samsung_Internet_Logo.svg.png",
+        "author": "Samsung",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "ungoogled",
+        "label": "Ungoogled Chromium",
+        "wiki": "Ungoogled_Chromium",
+        "url": "https://ungoogled-software.github.io",
+        "logo": "https://avatars.githubusercontent.com/u/31232658?s=128",
+        "logoFallback": "https://avatars.githubusercontent.com/u/31232658?s=128",
+        "author": "Ungoogled Software",
+        "currentVersion": "Tracks Chromium releases",
+        "eol": "Active community project"
+      }
+    },
+    {
+      "data": {
+        "id": "bromite",
+        "label": "Bromite",
+        "wiki": "",
+        "url": "https://www.bromite.org",
+        "logo": "https://www.bromite.org/static/bromite_icon_128.png",
+        "noWiki": true,
+        "wikiNote": "Bromite is an open-source web browser for Android based on Chromium. It is designed to provide a clutter-free browsing experience with a focus on privacy and security. The project implements a built-in ad-blocking engine and numerous patches to prevent browser fingerprinting and remove Google-specific telemetry. While historically significant as a leading privacy fork of Chromium, its development cycle became irregular in later years.",
+        "wikiUrl": "https://www.bromite.org",
+        "author": "Romeo Masci",
+        "currentVersion": "Project status varies",
+        "eol": "Likely inactive"
+      }
+    },
+    {
+      "data": {
+        "id": "cromite",
+        "label": "Cromite",
+        "wiki": "",
+        "url": "https://github.com/uazo/cromite",
+        "logo": "https://raw.githubusercontent.com/uazo/cromite/master/build/android/chrome/res/drawable-hdpi/app_icon.png",
+        "noWiki": true,
+        "wikiNote": "Cromite is an open-source Chromium fork for Android, developed as a direct successor to the Bromite project. It continues the mission of providing a privacy-hardened browsing experience by integrating Bromite's original security patches while ensuring more frequent updates synchronized with the upstream Chromium releases. It is currently recognized as the primary maintained alternative for users seeking the features of the original Bromite on modern systems.",
+        "wikiUrl": "https://github.com/uazo/cromite",
+        "author": "uazo",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "ladybird",
+        "label": "Ladybird",
+        "wiki": "Ladybird_(web_browser)",
+        "url": "https://ladybird.org",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Ladybird_web_browser_logo.svg/128px-Ladybird_web_browser_logo.svg.png",
+        "author": "Ladybird Project",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "netsurf",
+        "label": "NetSurf",
+        "wiki": "NetSurf",
+        "url": "https://www.netsurf-browser.org",
+        "logo": "https://www.netsurf-browser.org/images/netsurf-logo.png",
+        "author": "NetSurf Team",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "flow",
+        "label": "Flow Browser",
+        "wiki": "Flow_(web_browser)",
+        "url": "https://www.ekioh.com/flow-browser/",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Flow_browser_icon.png/128px-Flow_browser_icon.png",
+        "author": "Ekioh",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "dillo",
+        "label": "Dillo",
+        "wiki": "Dillo",
+        "url": "https://dillo-browser.github.io",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Dillo_logo.svg/128px-Dillo_logo.svg.png",
+        "author": "Dillo Project",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "android-webview",
+        "label": "Android WebView",
+        "wiki": "Android_WebView",
+        "url": "https://developer.android.com/reference/android/webkit/WebView",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Android_logo_2019.svg/128px-Android_logo_2019.svg.png",
+        "author": "Google",
+        "currentVersion": "Tracks Chromium stable",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "ios-wkwebview",
+        "label": "iOS WKWebView",
+        "wiki": "WKWebView",
+        "url": "https://developer.apple.com/documentation/webkit/wkwebview",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/128px-Apple_logo_black.svg.png",
+        "author": "Apple",
+        "currentVersion": "Tracks iOS release",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "macos-webview",
+        "label": "macOS WebView (legacy)",
+        "wiki": "WebKit",
+        "url": "https://developer.apple.com/documentation/webkit",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Apple_logo_black.svg/128px-Apple_logo_black.svg.png",
+        "author": "Apple",
+        "currentVersion": "Unknown",
+        "eol": "Unknown"
+      }
+    },
+    {
+      "data": {
+        "id": "windows-webview2",
+        "label": "Windows WebView2",
+        "wiki": "",
+        "url": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png",
+        "noWiki": true,
+        "wikiNote": "WebView2 is a component that allows embedding web content in native Windows applications using the Microsoft Edge rendering engine, providing a modern web experience for desktop apps.",
+        "wikiUrl": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/",
+        "author": "Microsoft",
+        "currentVersion": "Evergreen runtime",
+        "eol": "Active"
+      }
+    },
+    {
+      "data": {
+        "id": "windows-webbrowser",
+        "label": "Windows WebBrowser (legacy)",
+        "wiki": "WebBrowser_control",
+        "url": "https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.webbrowser",
+        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Microsoft_logo_%282012%29.svg/128px-Microsoft_logo_%282012%29.svg.png",
+        "author": "Microsoft",
+        "currentVersion": "Legacy control",
+        "eol": "Legacy / deprecated"
+      }
+    }
   ],
   "edges": [
-    { "data": { "source": "mosaic", "target": "netscape" } },
-    { "data": { "source": "mosaic", "target": "trident" } },
-    { "data": { "source": "trident", "target": "edgehtml" } },
-    { "data": { "source": "trident", "target": "ie" } },
-    { "data": { "source": "trident", "target": "windows-webbrowser" } },
-    { "data": { "source": "edgehtml", "target": "edge-legacy" } },
-    { "data": { "source": "presto", "target": "opera-presto" } },
-    { "data": { "source": "konqueror", "target": "khtml" } },
-    { "data": { "source": "khtml", "target": "webkit" } },
-    { "data": { "source": "netscape", "target": "gecko" } },
-    { "data": { "source": "gecko", "target": "firefox" } },
-    { "data": { "source": "firefox", "target": "tor" } },
-    { "data": { "source": "firefox", "target": "librewolf" } },
-    { "data": { "source": "firefox", "target": "mullvad" } },
-    { "data": { "source": "firefox", "target": "palemoon" } },
-    { "data": { "source": "firefox", "target": "zen" } },
-    { "data": { "source": "firefox", "target": "icecat" } },
-    { "data": { "source": "firefox", "target": "waterfox" } },
-    { "data": { "source": "webkit", "target": "safari" } },
-    { "data": { "source": "webkit", "target": "ios-wkwebview" } },
-    { "data": { "source": "webkit", "target": "macos-webview" } },
-    { "data": { "source": "webkit", "target": "blink" } },
-    { "data": { "source": "blink", "target": "chromium" } },
-    { "data": { "source": "chromium", "target": "chrome" } },
-    { "data": { "source": "chromium", "target": "brave" } },
-    { "data": { "source": "chromium", "target": "edge" } },
-    { "data": { "source": "chromium", "target": "opera" } },
-    { "data": { "source": "chromium", "target": "vivaldi" } },
-    { "data": { "source": "chromium", "target": "arc" } },
-    { "data": { "source": "chromium", "target": "kiwi" } },
-    { "data": { "source": "chromium", "target": "min" } },
-    { "data": { "source": "chromium", "target": "samsung" } },
-    { "data": { "source": "chromium", "target": "android-webview" } },
-    { "data": { "source": "edge", "target": "windows-webview2" } },
-    { "data": { "source": "chromium", "target": "ungoogled" } },
-    { "data": { "source": "chromium", "target": "bromite" } },
-    { "data": { "source": "bromite", "target": "cromite" } }
+    {
+      "data": {
+        "source": "mosaic",
+        "target": "netscape"
+      }
+    },
+    {
+      "data": {
+        "source": "mosaic",
+        "target": "trident"
+      }
+    },
+    {
+      "data": {
+        "source": "trident",
+        "target": "edgehtml"
+      }
+    },
+    {
+      "data": {
+        "source": "trident",
+        "target": "ie"
+      }
+    },
+    {
+      "data": {
+        "source": "trident",
+        "target": "windows-webbrowser"
+      }
+    },
+    {
+      "data": {
+        "source": "edgehtml",
+        "target": "edge-legacy"
+      }
+    },
+    {
+      "data": {
+        "source": "presto",
+        "target": "opera-presto"
+      }
+    },
+    {
+      "data": {
+        "source": "konqueror",
+        "target": "khtml"
+      }
+    },
+    {
+      "data": {
+        "source": "khtml",
+        "target": "webkit"
+      }
+    },
+    {
+      "data": {
+        "source": "netscape",
+        "target": "gecko"
+      }
+    },
+    {
+      "data": {
+        "source": "gecko",
+        "target": "firefox"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "tor"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "librewolf"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "mullvad"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "palemoon"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "zen"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "icecat"
+      }
+    },
+    {
+      "data": {
+        "source": "firefox",
+        "target": "waterfox"
+      }
+    },
+    {
+      "data": {
+        "source": "webkit",
+        "target": "safari"
+      }
+    },
+    {
+      "data": {
+        "source": "webkit",
+        "target": "ios-wkwebview"
+      }
+    },
+    {
+      "data": {
+        "source": "webkit",
+        "target": "macos-webview"
+      }
+    },
+    {
+      "data": {
+        "source": "webkit",
+        "target": "blink"
+      }
+    },
+    {
+      "data": {
+        "source": "blink",
+        "target": "chromium"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "chrome"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "brave"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "edge"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "opera"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "vivaldi"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "arc"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "kiwi"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "min"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "samsung"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "android-webview"
+      }
+    },
+    {
+      "data": {
+        "source": "edge",
+        "target": "windows-webview2"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "ungoogled"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "bromite"
+      }
+    },
+    {
+      "data": {
+        "source": "bromite",
+        "target": "cromite"
+      }
+    }
   ]
 }

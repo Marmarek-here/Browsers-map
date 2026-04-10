@@ -31,11 +31,15 @@
             display: none;
             flex-direction: column;
             border-left: 1px solid #334155;
-            animation: slideIn 0.3s ease-out;
+            opacity: 0;
+            transform: translateX(18px);
         }
-        @keyframes slideIn {
+        #sidebar.sidebar-open {
+            animation: sidebarIn 0.28s ease-out forwards;
+        }
+        @keyframes sidebarIn {
             from {
-                transform: translateX(100%);
+                transform: translateX(24px);
                 opacity: 0;
             }
             to {
@@ -309,8 +313,69 @@
             return googleFavicon;
         }
 
+        function getAutoNodeMeta(nodeData) {
+            const metaById = {
+                chrome: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                chromium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                firefox: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                edge: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                safari: { currentVersion: 'Bundled with latest macOS/iOS', eol: 'Active' },
+                opera: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                brave: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                vivaldi: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                arc: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                tor: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                librewolf: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                mullvad: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                waterfox: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                zen: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                samsung: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                'android-webview': { currentVersion: 'Tracks Chromium stable', eol: 'Active' },
+                'ios-wkwebview': { currentVersion: 'Tracks iOS release', eol: 'Active' },
+                'windows-webview2': { currentVersion: 'Evergreen runtime', eol: 'Active' },
+                'edge-legacy': { currentVersion: '44 (final)', eol: 'EoL (2021)' },
+                ie: { currentVersion: '11 (final)', eol: 'EoL (2022)' },
+                trident: { currentVersion: 'Engine only', eol: 'EoL' },
+                edgehtml: { currentVersion: 'Engine only', eol: 'EoL' },
+                presto: { currentVersion: 'Engine only', eol: 'EoL' },
+                'opera-presto': { currentVersion: '12.18 (final)', eol: 'EoL' },
+                mosaic: { currentVersion: 'Discontinued', eol: 'EoL' },
+                netscape: { currentVersion: 'Discontinued', eol: 'EoL' },
+                'windows-webbrowser': { currentVersion: 'Legacy control', eol: 'Legacy / deprecated' },
+                bromite: { currentVersion: 'Project status varies', eol: 'Likely inactive' },
+                cromite: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                ungoogled: { currentVersion: 'Tracks Chromium releases', eol: 'Active community project' }
+            };
+
+            const hardcoded = metaById[nodeData.id];
+            if (hardcoded) return hardcoded;
+
+            const label = (nodeData.label || '').toLowerCase();
+            if (label.includes('engine')) {
+                return { currentVersion: 'Engine component', eol: 'Varies by embedding app' };
+            }
+
+            return { currentVersion: 'Unknown', eol: 'Unknown' };
+        }
+
+        function buildMetaHtml(nodeData) {
+            const parts = [];
+            if (nodeData.author) {
+                parts.push(`<p><strong>Author:</strong> ${nodeData.author}</p>`);
+            }
+            if (nodeData.currentVersion) {
+                parts.push(`<p><strong>Current version:</strong> ${nodeData.currentVersion}</p>`);
+            }
+            if (nodeData.eol) {
+                parts.push(`<p><strong>EoL:</strong> ${nodeData.eol}</p>`);
+            }
+            return parts.length ? `<hr>${parts.join('')}` : '';
+        }
+
         function closeSidebar() {
-            document.getElementById('sidebar').style.display = 'none';
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('sidebar-open');
+            sidebar.style.display = 'none';
             document.getElementById('placeholder').style.display = 'block';
         }
 
@@ -318,6 +383,14 @@
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
+
+                // Auto-fill metadata for every node to keep fields complete.
+                data.nodes.forEach((entry) => {
+                    const d = entry.data;
+                    const autoMeta = getAutoNodeMeta(d);
+                    if (!d.currentVersion) d.currentVersion = autoMeta.currentVersion;
+                    if (!d.eol) d.eol = autoMeta.eol;
+                });
 
                 const cy = cytoscape({
                     container: document.getElementById('cy'),
@@ -336,7 +409,7 @@
                                 'width': 52,
                                 'height': 52,
                                 'background-image': function(node) {
-                                    if (node.data('id') === 'ungoogled') return '';
+                                    if (node.data('id') === 'ungoogled') return 'none';
                                     return getLogoUrl(node.data());
                                 },
                                 'background-fit': 'contain',
@@ -357,6 +430,13 @@
                                 'target-arrow-shape': 'triangle',
                                 'curve-style': 'bezier',
                                 'opacity': 0.7
+                            }
+                        },
+                        {
+                            selector: 'node[id = "ungoogled"]',
+                            style: {
+                                'background-image': 'none',
+                                'background-opacity': 0
                             }
                         },
                         {
@@ -397,6 +477,9 @@
                     document.getElementById('placeholder').style.display = 'none';
                     const sidebar = document.getElementById('sidebar');
                     sidebar.style.display = 'flex';
+                    sidebar.classList.remove('sidebar-open');
+                    void sidebar.offsetWidth;
+                    sidebar.classList.add('sidebar-open');
 
                     // Logo
                     const logoEl = document.getElementById('sidebar-logo');
@@ -422,13 +505,10 @@
                     if (nd.noWiki) {
                         // No wiki — show custom description and link to homepage
                         const extract = nd.wikiNote || 'No description available.';
-                        let authorHtml = '';
-                        if (nd.author) {
-                            authorHtml = `<hr><p><strong>Author:</strong> ${nd.author}</p>`;
-                        }
+                        const metaHtml = buildMetaHtml(nd);
                         document.getElementById('content').innerHTML = `
                             <p>${extract}</p>
-                            ${authorHtml}
+                            ${metaHtml}
                             <hr>
                             <a href="${nd.wikiUrl || nd.url}" target="_blank">Visit official page →</a>
                         `;
@@ -441,13 +521,10 @@
                         const info = await res.json();
                         const extract = info.extract || 'No description available.';
                         const wikiLink = info.content_urls?.desktop?.page || `https://en.wikipedia.org/wiki/${nd.wiki}`;
-                        let authorHtml = '';
-                        if (nd.author) {
-                            authorHtml = `<hr><p><strong>Author:</strong> ${nd.author}</p>`;
-                        }
+                        const metaHtml = buildMetaHtml(nd);
                         document.getElementById('content').innerHTML = `
                             <p>${extract}</p>
-                            ${authorHtml}
+                            ${metaHtml}
                             <hr>
                             <a href="${wikiLink}" target="_blank">Read more on Wikipedia →</a>
                         `;
