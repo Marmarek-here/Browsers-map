@@ -299,10 +299,6 @@
             letter-spacing: 0.025em;
             user-select: none;
             white-space: nowrap;
-            transition: opacity 0.22s;
-        }
-        body.sidebar-visible #watermark {
-            opacity: 0;
         }
         body.theme-light #watermark,
         body.light-mode #watermark {
@@ -689,11 +685,11 @@
         // High-quality icon overrides for nodes where the favicon API gives poor results
         // (dead domains, wrong brand icons, or low-res favicons).
         const LOGO_OVERRIDES = {
-            firefox:   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/240px-Firefox_logo%2C_2019.svg.png',
-            chromium:  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Chromium_Logo.svg/240px-Chromium_Logo.svg.png',
-            ungoogled: 'https://avatars.githubusercontent.com/u/34956588?s=200',
-            netscape:  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Netscape_Communicator_logo.svg/240px-Netscape_Communicator_logo.svg.png',
-            netsurf:   'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/NetSurf-logo.png/200px-NetSurf-logo.png',
+            firefox:   'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/512px-Firefox_logo%2C_2019.svg.png',
+            chromium:  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Chromium_Logo.svg/512px-Chromium_Logo.svg.png',
+            ungoogled: 'https://avatars.githubusercontent.com/u/34956588?s=200&v=4',
+            netscape:  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Netscape_Communicator_logo.svg/512px-Netscape_Communicator_logo.svg.png',
+            netsurf:   'https://upload.wikimedia.org/wikipedia/en/5/5b/NetSurf-logo.png',
         };
 
         function getLogoUrl(nodeData, size = 256) {
@@ -998,11 +994,14 @@
                     document.getElementById('placeholder').style.display = 'none';
                     localStorage.setItem('mapHintDismissed', '1');
                     const sidebar = document.getElementById('sidebar');
+                    const alreadyOpen = sidebar.style.display === 'flex';
                     sidebar.style.display = 'flex';
-                    sidebar.classList.remove('sidebar-open');
-                    sidebar.classList.remove('sidebar-closing');
-                    void sidebar.offsetWidth;
-                    sidebar.classList.add('sidebar-open');
+                    if (!alreadyOpen) {
+                        sidebar.classList.remove('sidebar-open');
+                        sidebar.classList.remove('sidebar-closing');
+                        void sidebar.offsetWidth;
+                        sidebar.classList.add('sidebar-open');
+                    }
                     document.body.classList.add('sidebar-visible');
 
                     // Logo
