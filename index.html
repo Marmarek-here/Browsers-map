@@ -586,25 +586,25 @@
         // --- Config ---
         const nodeColors = {
             chromium: '#38bdf8', chrome: '#38bdf8', brave: '#38bdf8',
-            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8', thorium: '#38bdf8', helium: '#38bdf8', yandex: '#38bdf8', comet: '#38bdf8',
+            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8', thorium: '#38bdf8', yandex: '#38bdf8', comet: '#38bdf8',
             ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8', arc: '#38bdf8', kiwi: '#38bdf8', min: '#38bdf8', samsung: '#38bdf8', blink: '#38bdf8',
-            gecko: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
+            gecko: '#a78bfa', goanna: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
             librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa', basilisk: '#a78bfa', zen: '#a78bfa', floorp: '#a78bfa', iceweasel: '#a78bfa', icecat: '#a78bfa', waterfox: '#a78bfa',
             presto: '#ef4444', 'opera-presto': '#ef4444',
             netscape: '#d97706', mosaic: '#d97706',
-            webkit: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399',
+            webkit: '#34d399', helium: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399',
             ladybird: '#f59e0b', netsurf: '#f59e0b', flow: '#f59e0b', dillo: '#f59e0b',
             ie: '#94a3b8', trident: '#94a3b8', edgehtml: '#94a3b8', 'edge-legacy': '#94a3b8', 'windows-webbrowser': '#94a3b8', 'windows-webview2': '#38bdf8',
         };
 
         const engineLabels = {
             chromium: 'Blink', chrome: 'Blink', brave: 'Blink',
-            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink', thorium: 'Blink', helium: 'Blink', yandex: 'Blink', comet: 'Blink',
+            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink', thorium: 'Blink', yandex: 'Blink', comet: 'Blink',
             ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink', arc: 'Blink', kiwi: 'Blink', min: 'Blink', samsung: 'Blink', blink: 'Blink engine',
-            gecko: 'Gecko engine', firefox: 'Gecko', tor: 'Gecko',
+            gecko: 'Gecko engine', goanna: 'Goanna engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', basilisk: 'Goanna', zen: 'Gecko', floorp: 'Gecko', iceweasel: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
             netscape: 'Mosaic lineage',
-            webkit: 'WebKit engine', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine',
+            webkit: 'WebKit engine', helium: 'WebKit', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine',
             presto: 'Presto engine', 'opera-presto': 'Presto', ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
             mosaic: 'NCSA Mosaic', ie: 'Trident', trident: 'Trident engine', edgehtml: 'EdgeHTML engine', 'edge-legacy': 'EdgeHTML',
         };
@@ -674,9 +674,9 @@
         }
 
         function getLegendGroup(nodeId) {
-            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'helium', 'yandex', 'comet', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
-            if (['firefox', 'tor', 'librewolf', 'mullvad', 'palemoon', 'basilisk', 'zen', 'floorp', 'iceweasel', 'icecat', 'waterfox', 'gecko'].includes(nodeId)) return 'gecko';
-            if (['webkit', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
+            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'yandex', 'comet', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
+            if (['firefox', 'tor', 'librewolf', 'mullvad', 'palemoon', 'basilisk', 'zen', 'floorp', 'iceweasel', 'icecat', 'waterfox', 'gecko', 'goanna'].includes(nodeId)) return 'gecko';
+            if (['webkit', 'helium', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
             if (['presto', 'opera-presto'].includes(nodeId)) return 'presto';
             if (['mosaic', 'netscape'].includes(nodeId)) return 'mosaic';
             if (['ie', 'trident', 'edgehtml', 'edge-legacy', 'windows-webbrowser'].includes(nodeId)) return 'legacy';
@@ -777,6 +777,7 @@
                 zen: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 iceweasel: { currentVersion: 'Discontinued', eol: 'EoL' },
                 basilisk: { currentVersion: 'Unknown', eol: 'Unknown' },
+                goanna: { currentVersion: 'Engine component', eol: 'Varies by embedding app' },
                 samsung: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 thorium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 helium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
@@ -940,6 +941,68 @@
                             }
                         },
                         {
+                            selector: 'node.lineage-focus',
+                            style: {
+                                'border-width': 4.4,
+                                'border-opacity': 1,
+                                'shadow-blur': 20,
+                                'shadow-opacity': 0.5,
+                                'shadow-color': '#f8fafc'
+                            }
+                        },
+                        {
+                            selector: 'node.lineage-ancestor',
+                            style: {
+                                'border-color': '#f59e0b',
+                                'border-opacity': 1,
+                                'border-width': 3.8,
+                                'opacity': 1,
+                                'text-opacity': 1
+                            }
+                        },
+                        {
+                            selector: 'node.lineage-descendant',
+                            style: {
+                                'border-color': '#22d3ee',
+                                'border-opacity': 1,
+                                'border-width': 3.8,
+                                'opacity': 1,
+                                'text-opacity': 1
+                            }
+                        },
+                        {
+                            selector: 'node.lineage-dim',
+                            style: {
+                                'opacity': 0.12,
+                                'text-opacity': 0.14,
+                                'border-opacity': 0.12
+                            }
+                        },
+                        {
+                            selector: 'edge.lineage-ancestor-edge',
+                            style: {
+                                'line-color': '#f59e0b',
+                                'target-arrow-color': '#f59e0b',
+                                'width': 2.4,
+                                'opacity': 0.95
+                            }
+                        },
+                        {
+                            selector: 'edge.lineage-descendant-edge',
+                            style: {
+                                'line-color': '#22d3ee',
+                                'target-arrow-color': '#22d3ee',
+                                'width': 2.4,
+                                'opacity': 0.95
+                            }
+                        },
+                        {
+                            selector: 'edge.lineage-dim-edge',
+                            style: {
+                                'opacity': 0.08
+                            }
+                        },
+                        {
                             selector: 'node:selected',
                             style: {
                                 'border-width': 3.5,
@@ -1027,6 +1090,33 @@
                     setTimeout(() => adjustSpecialPositions(cy, nextProfile), 120);
                 }
 
+                function clearLineageFocus() {
+                    cy.batch(() => {
+                        cy.nodes().removeClass('lineage-focus lineage-ancestor lineage-descendant lineage-dim');
+                        cy.edges().removeClass('lineage-ancestor-edge lineage-descendant-edge lineage-dim-edge');
+                    });
+                }
+
+                function applyLineageFocus(node) {
+                    const ancestors = node.predecessors('node');
+                    const descendants = node.successors('node');
+                    const ancestorEdges = node.predecessors('edge');
+                    const descendantEdges = node.successors('edge');
+                    const lineageNodes = node.union(ancestors).union(descendants);
+                    const lineageEdges = ancestorEdges.union(descendantEdges);
+
+                    clearLineageFocus();
+                    cy.batch(() => {
+                        cy.nodes().not(lineageNodes).addClass('lineage-dim');
+                        cy.edges().not(lineageEdges).addClass('lineage-dim-edge');
+                        node.addClass('lineage-focus');
+                        ancestors.addClass('lineage-ancestor');
+                        descendants.addClass('lineage-descendant');
+                        ancestorEdges.addClass('lineage-ancestor-edge');
+                        descendantEdges.addClass('lineage-descendant-edge');
+                    });
+                }
+
                 document.querySelectorAll('.legend-item').forEach((item) => {
                     item.addEventListener('click', () => applyLegendFilter(item.dataset.group));
                 });
@@ -1047,6 +1137,8 @@
                     const color = nodeColors[nd.id] || '#94a3b8';
                     const engine = engineLabels[nd.id] || '';
                     const engineStyle = engineColors[engine] || { bg: '#1e293b', text: '#94a3b8' };
+
+                    applyLineageFocus(node);
 
                     document.getElementById('placeholder').style.display = 'none';
                     localStorage.setItem('mapHintDismissed', '1');
@@ -1122,7 +1214,10 @@
                 });
 
                 cy.on('tap', function(evt) {
-                    if (evt.target === cy) closeSidebar();
+                    if (evt.target === cy) {
+                        clearLineageFocus();
+                        closeSidebar();
+                    }
                 });
 
                 const activeTheme = document.body.classList.contains('theme-light') ? 'light' : (document.body.classList.contains('theme-dark-oled') ? 'dark-oled' : 'dark-standard');

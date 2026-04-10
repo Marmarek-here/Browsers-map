@@ -122,6 +122,19 @@
     },
     {
       "data": {
+        "id": "goanna",
+        "label": "Goanna Engine",
+        "wiki": "Goanna_(software)",
+        "url": "https://en.wikipedia.org/wiki/Goanna_(software)",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/Goanna_(software)",
+        "author": "Moonchild Productions",
+        "currentVersion": "Engine component",
+        "eol": "Varies by embedding app",
+        "versionSource": "Project docs / manual tracking"
+      }
+    },
+    {
+      "data": {
         "id": "firefox",
         "label": "Firefox",
         "wiki": "Firefox",
@@ -755,6 +768,12 @@
     {
       "data": {
         "source": "gecko",
+        "target": "goanna"
+      }
+    },
+    {
+      "data": {
+        "source": "gecko",
         "target": "firefox"
       }
     },
@@ -778,7 +797,7 @@
     },
     {
       "data": {
-        "source": "firefox",
+        "source": "goanna",
         "target": "palemoon"
       }
     },
@@ -814,7 +833,7 @@
     },
     {
       "data": {
-        "source": "palemoon",
+        "source": "goanna",
         "target": "basilisk"
       }
     },
@@ -856,7 +875,7 @@
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "webkit",
         "target": "helium"
       }
     },
