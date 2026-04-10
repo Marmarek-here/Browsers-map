@@ -31,7 +31,6 @@ An interactive visualization of web browser genealogy and engine relationships.
 - **Independent**: Engines like NetSurf, Dillo, Ladybird, etc.
 
 ## Technologies Used
-gpt.com/c/69d8f2a5-d92c-8333-bd5b-ab5b
 - [Cytoscape.js](https://js.cytoscape.org/) for graph visualization
 - Wikipedia API for browser descriptions
 - Google Favicon API for logos
