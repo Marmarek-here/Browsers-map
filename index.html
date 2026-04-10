@@ -389,6 +389,9 @@
             max-width: none;
             min-width: 0;
             font-size: 0.73em;
+            max-height: 42vh;
+            overflow-y: auto;
+            z-index: 20;
         }
         body.mobile-layout #legend-header {
             flex-direction: column;
@@ -400,7 +403,7 @@
         body.mobile-layout #sidebar {
             width: 100%;
             min-width: 0;
-            padding: 24px 20px 96px;
+            padding: 24px 20px;
         }
         body.mobile-layout #sidebar-logo-wrap {
             width: 46px;
@@ -421,6 +424,15 @@
             right: 12px;
             width: auto;
             bottom: 12px;
+        }
+        body.mobile-layout.sidebar-visible .btn-add {
+            display: none;
+        }
+        body.mobile-layout #placeholder {
+            width: calc(100% - 24px);
+            top: 58%;
+            font-size: 1em;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -574,8 +586,8 @@
             if (!edgeNode.length || !webviewNode.length) return;
 
             const edgePos = edgeNode.position();
-            const xOffset = profile === 'mobile' ? 74 : 112;
-            const yOffset = profile === 'mobile' ? 60 : 72;
+            const xOffset = profile === 'mobile' ? 46 : 112;
+            const yOffset = profile === 'mobile' ? 38 : 72;
             webviewNode.position({ x: edgePos.x + xOffset, y: edgePos.y + yOffset });
         }
 
@@ -585,14 +597,18 @@
             });
         }
 
-        // Favicon with CDN fallback
-        function getLogoUrl(nodeData) {
-            const customLogo = nodeData.logo;
-            if (customLogo && customLogo !== "") {
-                return customLogo;
+        function getGoogleFaviconUrl(rawUrl, size = 256) {
+            try {
+                const origin = new URL(rawUrl).origin;
+                return `https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${encodeURIComponent(origin)}&size=${size}`;
+            } catch (e) {
+                return `https://www.google.com/s2/favicons?sz=${size}&domain_url=${rawUrl}`;
             }
-            const googleFavicon = `https://www.google.com/s2/favicons?sz=256&domain_url=${nodeData.url}`;
-            return googleFavicon;
+        }
+
+        // Force all icons through Google's favicon APIs for consistency.
+        function getLogoUrl(nodeData, size = 256) {
+            return getGoogleFaviconUrl(nodeData.url, size);
         }
 
         function getAutoNodeMeta(nodeData) {
@@ -640,6 +656,19 @@
             return { currentVersion: 'Unknown', eol: 'Unknown' };
         }
 
+        function renderVersionSource(versionSource) {
+            if (!versionSource) return '';
+            if (/^https?:\/\//i.test(versionSource)) {
+                try {
+                    const host = new URL(versionSource).host;
+                    return `<p><strong>Version source:</strong> <a href="${versionSource}" target="_blank">${host}</a></p>`;
+                } catch (e) {
+                    return `<p><strong>Version source:</strong> ${versionSource}</p>`;
+                }
+            }
+            return `<p><strong>Version source:</strong> ${versionSource}</p>`;
+        }
+
         function buildMetaHtml(nodeData) {
             const parts = [];
             if (nodeData.author) {
@@ -650,6 +679,9 @@
             }
             if (nodeData.eol) {
                 parts.push(`<p><strong>EoL:</strong> ${nodeData.eol}</p>`);
+            }
+            if (nodeData.versionSource) {
+                parts.push(renderVersionSource(nodeData.versionSource));
             }
             return parts.length ? `<hr>${parts.join('')}` : '';
         }
@@ -886,7 +918,11 @@
                     // Logo
                     const logoEl = document.getElementById('sidebar-logo');
                     logoEl.style.display = 'block';
-                    logoEl.src = getLogoUrl(nd);
+                    logoEl.onerror = function () {
+                        this.onerror = null;
+                        this.src = `https://www.google.com/s2/favicons?sz=256&domain_url=${nd.url}`;
+                    };
+                    logoEl.src = getLogoUrl(nd, 256);
                     logoEl.alt = nd.label;
 
                     // Title & badge

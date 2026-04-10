@@ -9,7 +9,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://ncsa.illinois.edu",
         "author": "NCSA",
         "currentVersion": "Discontinued",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "https://en.wikipedia.org/wiki/Mosaic_(web_browser)"
       }
     },
     {
@@ -21,7 +22,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://browser.netscape.com",
         "author": "Netscape Communications",
         "currentVersion": "Discontinued",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "https://en.wikipedia.org/wiki/Netscape_Navigator"
       }
     },
     {
@@ -33,7 +35,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/Trident_(software)",
         "author": "Microsoft",
         "currentVersion": "Engine only",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -45,7 +48,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/EdgeHTML",
         "author": "Microsoft",
         "currentVersion": "Engine only",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -57,7 +61,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://microsoft.com",
         "author": "Microsoft",
         "currentVersion": "11 (final)",
-        "eol": "EoL (2022)"
+        "eol": "EoL (2022)",
+        "versionSource": "https://en.wikipedia.org/wiki/Internet_Explorer"
       }
     },
     {
@@ -72,7 +77,8 @@
         "wikiUrl": "https://en.wikipedia.org/wiki/Microsoft_Edge",
         "author": "Microsoft",
         "currentVersion": "44 (final)",
-        "eol": "EoL (2021)"
+        "eol": "EoL (2021)",
+        "versionSource": "https://en.wikipedia.org/wiki/Microsoft_Edge"
       }
     },
     {
@@ -84,7 +90,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://konqueror.org",
         "author": "KDE",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -96,7 +103,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/KHTML",
         "author": "KDE",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -108,7 +116,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://mozilla.org",
         "author": "Mozilla",
         "currentVersion": "Engine component",
-        "eol": "Varies by embedding app"
+        "eol": "Varies by embedding app",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -120,7 +129,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://mozilla.org/firefox",
         "author": "Mozilla",
         "currentVersion": "149.0.2",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/firefox"
       }
     },
     {
@@ -132,7 +142,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://torproject.org",
         "author": "The Tor Project",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -144,7 +155,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://librewolf.net",
         "author": "LibreWolf Community",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -156,7 +168,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://mullvad.net/en/browser",
         "author": "Mullvad VPN",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -168,7 +181,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://palemoon.org",
         "author": "Moonchild Productions",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -180,7 +194,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/Presto_(browser_engine)",
         "author": "Opera Software",
         "currentVersion": "Engine only",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "https://en.wikipedia.org/wiki/Presto_(browser_engine)"
       }
     },
     {
@@ -195,7 +210,8 @@
         "wikiUrl": "https://en.wikipedia.org/wiki/Opera_(web_browser)",
         "author": "Opera Software",
         "currentVersion": "12.18 (final)",
-        "eol": "EoL"
+        "eol": "EoL",
+        "versionSource": "https://en.wikipedia.org/wiki/Presto_(browser_engine)"
       }
     },
     {
@@ -207,7 +223,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://zen-browser.app",
         "author": "Zen Community",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -219,7 +236,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.gnu.org/software/gnuzilla/",
         "author": "GNU Project",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -231,7 +249,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.waterfox.net",
         "author": "Waterfox Ltd",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -243,7 +262,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://webkit.org",
         "author": "Apple / KDE",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -255,7 +275,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://en.wikipedia.org/wiki/Blink_(browser_engine)",
         "author": "Google / Chromium Project",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -267,7 +288,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://apple.com/safari",
         "author": "Apple",
         "currentVersion": "26.0",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/safari"
       }
     },
     {
@@ -279,7 +301,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://chromium.org",
         "author": "Google / Chromium Project",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -291,7 +314,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://google.com/chrome",
         "author": "Google",
         "currentVersion": "146.0.7680.180",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/chrome"
       }
     },
     {
@@ -303,7 +327,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://brave.com",
         "author": "Brave Software",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -315,7 +340,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://microsoft.com/edge",
         "author": "Microsoft",
         "currentVersion": "146.0.3856.109",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/edge"
       }
     },
     {
@@ -327,7 +353,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://opera.com",
         "author": "Opera Software",
         "currentVersion": "130.0.5847.12",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/opera"
       }
     },
     {
@@ -339,7 +366,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://vivaldi.com",
         "author": "Vivaldi Technologies",
         "currentVersion": "7.9.3970.45",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "https://www.whatismybrowser.com/guides/the-latest-version/vivaldi"
       }
     },
     {
@@ -351,7 +379,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://arc.net",
         "author": "The Browser Company",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -366,7 +395,8 @@
         "wikiUrl": "https://thekiwibrowser.com/",
         "author": "Geometry OU",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -381,7 +411,8 @@
         "wikiUrl": "https://minbrowser.org",
         "author": "Min Contributors",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -393,7 +424,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://samsung.com",
         "author": "Samsung",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -405,7 +437,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://ungoogled-software.github.io",
         "author": "Ungoogled Software",
         "currentVersion": "Tracks Chromium releases",
-        "eol": "Active community project"
+        "eol": "Active community project",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -420,7 +453,8 @@
         "wikiUrl": "https://www.bromite.org",
         "author": "Romeo Masci",
         "currentVersion": "Project status varies",
-        "eol": "Likely inactive"
+        "eol": "Likely inactive",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -435,7 +469,8 @@
         "wikiUrl": "https://github.com/uazo/cromite",
         "author": "uazo",
         "currentVersion": "Stable channel (rolling)",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -447,7 +482,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://ladybird.org",
         "author": "Ladybird Project",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -459,7 +495,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.netsurf-browser.org",
         "author": "NetSurf Team",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -471,7 +508,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.ekioh.com/flow-browser/",
         "author": "Ekioh",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -483,7 +521,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://dillo-browser.github.io",
         "author": "Dillo Project",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -495,7 +534,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://developer.android.com/reference/android/webkit/WebView",
         "author": "Google",
         "currentVersion": "Tracks Chromium stable",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -507,7 +547,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://developer.apple.com/documentation/webkit/wkwebview",
         "author": "Apple",
         "currentVersion": "Tracks iOS release",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -519,7 +560,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://developer.apple.com/documentation/webkit",
         "author": "Apple",
         "currentVersion": "Unknown",
-        "eol": "Unknown"
+        "eol": "Unknown",
+        "versionSource": "Project docs / manual tracking"
       }
     },
     {
@@ -534,7 +576,8 @@
         "wikiUrl": "https://developer.microsoft.com/en-us/microsoft-edge/webview2/",
         "author": "Microsoft",
         "currentVersion": "Evergreen runtime",
-        "eol": "Active"
+        "eol": "Active",
+        "versionSource": "Project release notes"
       }
     },
     {
@@ -546,7 +589,8 @@
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.webbrowser",
         "author": "Microsoft",
         "currentVersion": "Legacy control",
-        "eol": "Legacy / deprecated"
+        "eol": "Legacy / deprecated",
+        "versionSource": "Project docs / manual tracking"
       }
     }
   ],
