@@ -815,7 +815,7 @@
     },
     {
       "data": {
-        "source": "iceweasel",
+        "source": "firefox",
         "target": "icecat"
       }
     },
@@ -881,7 +881,7 @@
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "yandex"
       }
     },
@@ -893,31 +893,31 @@
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "brave"
       }
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "edge"
       }
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "opera"
       }
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "vivaldi"
       }
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "arc"
       }
     },
@@ -929,7 +929,7 @@
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "kiwi"
       }
     },
@@ -941,7 +941,7 @@
     },
     {
       "data": {
-        "source": "chromium",
+        "source": "chrome",
         "target": "samsung"
       }
     },
