@@ -47,8 +47,9 @@
             transform: translate(-50%, -50%) scale(0.84);
         }
         @media (hover: hover) and (pointer: fine) {
-            #cy {
-                cursor: none;
+            body,
+            body * {
+                cursor: none !important;
             }
         }
         #sidebar {
@@ -575,7 +576,7 @@
         // --- Config ---
         const nodeColors = {
             chromium: '#38bdf8', chrome: '#38bdf8', brave: '#38bdf8',
-            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8',
+            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8', thorium: '#38bdf8',
             ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8', arc: '#38bdf8', kiwi: '#38bdf8', min: '#38bdf8', samsung: '#38bdf8', blink: '#38bdf8',
             gecko: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
             librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa', zen: '#a78bfa', icecat: '#a78bfa', waterfox: '#a78bfa',
@@ -588,7 +589,7 @@
 
         const engineLabels = {
             chromium: 'Blink', chrome: 'Blink', brave: 'Blink',
-            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink',
+            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink', thorium: 'Blink',
             ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink', arc: 'Blink', kiwi: 'Blink', min: 'Blink', samsung: 'Blink', blink: 'Blink engine',
             gecko: 'Gecko engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', zen: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
@@ -663,7 +664,7 @@
         }
 
         function getLegendGroup(nodeId) {
-            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
+            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
             if (['firefox', 'tor', 'librewolf', 'mullvad', 'palemoon', 'zen', 'icecat', 'waterfox', 'gecko'].includes(nodeId)) return 'gecko';
             if (['webkit', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
             if (['presto', 'opera-presto'].includes(nodeId)) return 'presto';
@@ -718,7 +719,7 @@
             chromium:  'https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Chromium_Logo.svg/512px-Chromium_Logo.svg.png',
             ungoogled: 'https://avatars.githubusercontent.com/u/34956588?s=200&v=4',
             netscape:  'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Netscape_Communicator_logo.svg/512px-Netscape_Communicator_logo.svg.png',
-            netsurf:   'https://upload.wikimedia.org/wikipedia/en/5/5b/NetSurf-logo.png',
+            netsurf:   'https://raw.githubusercontent.com/netsurf-browser/netsurf/master/resources/netsurf.png',
             icecat:    'https://www.gnu.org/software/gnuzilla/icecat.png',
         };
 
@@ -727,25 +728,24 @@
             return getGoogleFaviconUrl(nodeData.url, size);
         }
 
-        function setupCustomCursor(cy) {
+        function setupCustomCursor() {
             const cursorEl = document.getElementById('custom-cursor');
             if (!cursorEl) return;
             if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
 
-            const container = cy.container();
             const moveCursor = (evt) => {
                 cursorEl.style.left = `${evt.clientX}px`;
                 cursorEl.style.top = `${evt.clientY}px`;
+                cursorEl.style.opacity = '1';
             };
 
-            container.addEventListener('mouseenter', () => { cursorEl.style.opacity = '1'; });
-            container.addEventListener('mouseleave', () => {
+            document.addEventListener('mousemove', moveCursor);
+            document.addEventListener('mousedown', () => cursorEl.classList.add('pressed'));
+            document.addEventListener('mouseup', () => cursorEl.classList.remove('pressed'));
+            document.addEventListener('mouseleave', () => {
                 cursorEl.style.opacity = '0';
                 cursorEl.classList.remove('pressed');
             });
-            container.addEventListener('mousemove', moveCursor);
-            container.addEventListener('mousedown', () => cursorEl.classList.add('pressed'));
-            container.addEventListener('mouseup', () => cursorEl.classList.remove('pressed'));
         }
 
         function getAutoNodeMeta(nodeData) {
@@ -765,6 +765,7 @@
                 waterfox: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 zen: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 samsung: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                thorium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 'android-webview': { currentVersion: 'Tracks Chromium stable', eol: 'Active' },
                 'ios-wkwebview': { currentVersion: 'Tracks iOS release', eol: 'Active' },
                 'windows-webview2': { currentVersion: 'Evergreen runtime', eol: 'Active' },
@@ -1021,7 +1022,7 @@
                 });
 
                 applyResponsiveGraphStyles(profile);
-                setupCustomCursor(cy);
+                setupCustomCursor();
                 setTimeout(() => adjustSpecialPositions(cy, profile), 120);
 
                 cy.on('tap', 'node', async function(evt) {

@@ -307,6 +307,19 @@
     },
     {
       "data": {
+        "id": "thorium",
+        "label": "Thorium Browser",
+        "wiki": "Thorium_(web_browser)",
+        "url": "https://thorium.rocks",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://thorium.rocks",
+        "author": "Alex313031",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
+      }
+    },
+    {
+      "data": {
         "id": "chrome",
         "label": "Google Chrome",
         "wiki": "Google_Chrome",
@@ -492,7 +505,7 @@
         "label": "NetSurf",
         "wiki": "NetSurf",
         "url": "https://www.netsurf-browser.org",
-        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.netsurf-browser.org",
+        "logo": "https://raw.githubusercontent.com/netsurf-browser/netsurf/master/resources/netsurf.png",
         "author": "NetSurf Team",
         "currentVersion": "Unknown",
         "eol": "Unknown",
@@ -731,6 +744,12 @@
       "data": {
         "source": "blink",
         "target": "chromium"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "thorium"
       }
     },
     {
