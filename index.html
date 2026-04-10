@@ -11,8 +11,9 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             display: flex;
-            height: 100vh;
-            background: #0f172a;
+            height: 100dvh;
+            min-height: 100vh;
+            background: radial-gradient(circle at 20% 15%, #1e293b, #0f172a 42%, #020617 100%);
             color: #f8fafc;
             overflow: hidden;
             position: relative;
@@ -25,9 +26,9 @@
         #sidebar {
             width: 460px;
             min-width: 460px;
-            background: #1e293b;
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.96), rgba(15, 23, 42, 0.95));
             padding: 32px 28px;
-            box-shadow: -5px 0 20px rgba(0,0,0,0.4);
+            box-shadow: -12px 0 32px rgba(2, 6, 23, 0.55);
             overflow-y: auto;
             display: none;
             flex-direction: column;
@@ -105,7 +106,7 @@
         }
         body.light-mode,
         body.theme-light {
-            background: #f8fafc;
+            background: radial-gradient(circle at 20% 12%, #dbeafe, #f8fafc 42%, #e2e8f0 100%);
             color: #0f172a;
         }
         body.light-mode #sidebar,
@@ -286,6 +287,137 @@
             z-index: 10;
         }
         .btn-add:hover { background: #7dd3fc; }
+        #fun-btn {
+            position: absolute;
+            right: 20px;
+            bottom: 20px;
+            padding: 12px 18px;
+            border-radius: 10px;
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: linear-gradient(135deg, #0ea5e9, #2563eb);
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            cursor: pointer;
+            z-index: 20;
+            box-shadow: 0 10px 22px rgba(37, 99, 235, 0.35);
+            transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+        }
+        #fun-btn:hover {
+            transform: translateY(-2px);
+            filter: brightness(1.06);
+            box-shadow: 0 14px 26px rgba(37, 99, 235, 0.45);
+        }
+        #fun-btn:disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        #fun-overlay {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 18;
+            overflow: hidden;
+            display: none;
+        }
+        #fun-overlay.active {
+            display: block;
+        }
+        #fun-status {
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(2, 6, 23, 0.72);
+            color: #f8fafc;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 0.82rem;
+            backdrop-filter: blur(6px);
+        }
+        .fun-popcorn {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #fde68a;
+            box-shadow: 0 0 8px rgba(254, 243, 199, 0.8);
+            animation: popcornDrop linear forwards;
+        }
+        @keyframes popcornDrop {
+            from { transform: translateY(-8vh) rotate(0deg); opacity: 1; }
+            to { transform: translateY(90vh) rotate(360deg); opacity: 0.8; }
+        }
+        .fun-microwave {
+            position: absolute;
+            width: 120px;
+            height: 80px;
+            border: 2px solid #94a3b8;
+            border-radius: 12px;
+            background: rgba(30, 41, 59, 0.92);
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 10px 20px rgba(2, 6, 23, 0.5);
+        }
+        .fun-microwave.shake {
+            animation: microwaveShake 0.18s linear infinite;
+        }
+        .fun-microwave.explode {
+            background: #f97316;
+            box-shadow: 0 0 40px rgba(249, 115, 22, 0.95), 0 0 90px rgba(251, 146, 60, 0.75);
+        }
+        @keyframes microwaveShake {
+            0% { transform: translateX(-50%) translateY(0); }
+            25% { transform: translateX(-50%) translateY(-2px) rotate(-1deg); }
+            50% { transform: translateX(-50%) translateY(2px) rotate(1deg); }
+            75% { transform: translateX(-50%) translateY(-1px) rotate(-1deg); }
+            100% { transform: translateX(-50%) translateY(0); }
+        }
+        .stickman {
+            position: absolute;
+            width: 18px;
+            height: 34px;
+            border: 2px solid #f8fafc;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+            border-bottom: none;
+            opacity: 0.95;
+        }
+        .stickman::before,
+        .stickman::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background: #f8fafc;
+        }
+        .stickman::before {
+            height: 14px;
+            left: 2px;
+            bottom: -14px;
+            transform: rotate(18deg);
+        }
+        .stickman::after {
+            height: 14px;
+            right: 2px;
+            bottom: -14px;
+            transform: rotate(-18deg);
+        }
+        .browser-ball {
+            position: absolute;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            border: 2px solid rgba(248, 250, 252, 0.72);
+            background: radial-gradient(circle at 35% 30%, #7dd3fc, #0369a1);
+            color: #f8fafc;
+            font-size: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
         #placeholder {
             position: absolute;
             top: 50%;
@@ -301,7 +433,7 @@
             position: absolute;
             top: 16px;
             left: 16px;
-            background: #1e293bdd;
+            background: linear-gradient(160deg, rgba(30, 41, 59, 0.92), rgba(15, 23, 42, 0.9));
             border: 1px solid #334155;
             border-radius: 10px;
             padding: 12px 16px;
@@ -315,6 +447,7 @@
             gap: 8px;
             min-width: 250px;
             max-width: 290px;
+            box-shadow: 0 12px 28px rgba(2, 6, 23, 0.38);
         }
         #legend-header {
             display: flex;
@@ -382,14 +515,25 @@
         body.theme-dark-oled .btn-add:hover {
             background: #67e8f9;
         }
+        body.theme-light #fun-btn,
+        body.light-mode #fun-btn {
+            background: linear-gradient(135deg, #0284c7, #0369a1);
+            border-color: rgba(2, 132, 199, 0.35);
+            box-shadow: 0 10px 22px rgba(3, 105, 161, 0.28);
+        }
+        body.theme-dark-oled #fun-btn {
+            background: linear-gradient(135deg, #06b6d4, #0e7490);
+            border-color: rgba(34, 211, 238, 0.35);
+            box-shadow: 0 10px 22px rgba(8, 145, 178, 0.35);
+        }
         body.mobile-layout #legend {
-            top: 12px;
+            top: calc(env(safe-area-inset-top, 0px) + 8px);
             left: 12px;
             right: 12px;
             max-width: none;
             min-width: 0;
             font-size: 0.73em;
-            max-height: 42vh;
+            max-height: 36dvh;
             overflow-y: auto;
             z-index: 20;
         }
@@ -423,7 +567,15 @@
             left: 12px;
             right: 12px;
             width: auto;
-            bottom: 12px;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);
+            z-index: 22;
+        }
+        body.mobile-layout #fun-btn {
+            right: 12px;
+            bottom: calc(env(safe-area-inset-bottom, 0px) + 68px);
+            padding: 10px 14px;
+            font-size: 0.86rem;
+            z-index: 24;
         }
         body.mobile-layout.sidebar-visible .btn-add {
             display: none;
@@ -433,6 +585,19 @@
             top: 58%;
             font-size: 1em;
             line-height: 1.6;
+        }
+        @media (max-width: 520px) and (max-height: 760px) {
+            body.mobile-layout #legend {
+                max-height: 30dvh;
+                padding: 10px 12px;
+            }
+            body.mobile-layout #placeholder {
+                top: 63%;
+                font-size: 0.95em;
+            }
+            body.mobile-layout #content {
+                line-height: 1.6;
+            }
         }
     </style>
 </head>
@@ -477,6 +642,10 @@
     <button class="btn-add" onclick="window.open('https://github.com/Marmarek-here/Browsers-Map/issues')">
         Suggest a Browser
     </button>
+    <button id="fun-btn" onclick="startFunMode()">Fun</button>
+    <div id="fun-overlay">
+        <div id="fun-status"></div>
+    </div>
 
     <script>
         // --- Config ---
@@ -554,8 +723,8 @@
                 return {
                     name: 'breadthfirst',
                     directed: true,
-                    padding: 28,
-                    spacingFactor: 0.62,
+                    padding: 38,
+                    spacingFactor: 0.94,
                     avoidOverlap: true,
                 };
             }
@@ -595,6 +764,199 @@
             document.querySelectorAll('.legend-item').forEach((item) => {
                 item.classList.toggle('active', item.dataset.group === group);
             });
+        }
+
+        let cyRef = null;
+        let funTimer = null;
+        let funCleanupTimer = null;
+        let funAnimationTimers = [];
+        let funRunning = false;
+        const cursorState = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+        window.addEventListener('mousemove', (evt) => {
+            cursorState.x = evt.clientX;
+            cursorState.y = evt.clientY;
+        });
+
+        function queueFunTimer(fn, delay) {
+            const t = window.setTimeout(fn, delay);
+            funAnimationTimers.push(t);
+        }
+
+        function clearFunTimers() {
+            funAnimationTimers.forEach((t) => window.clearTimeout(t));
+            funAnimationTimers = [];
+        }
+
+        function playMicrowaveDoneTone() {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const now = audioCtx.currentTime;
+                [880, 880, 660].forEach((freq, idx) => {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.value = freq;
+                    gain.gain.setValueAtTime(0.001, now + idx * 0.26);
+                    gain.gain.exponentialRampToValueAtTime(0.18, now + idx * 0.26 + 0.02);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.26 + 0.22);
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.start(now + idx * 0.26);
+                    osc.stop(now + idx * 0.26 + 0.24);
+                });
+                queueFunTimer(() => audioCtx.close(), 1400);
+            } catch (e) {
+                // Silent fail if audio is blocked by browser policy.
+            }
+        }
+
+        function stopFunMode() {
+            const overlay = document.getElementById('fun-overlay');
+            overlay.classList.remove('active');
+            overlay.innerHTML = '<div id="fun-status"></div>';
+            const btn = document.getElementById('fun-btn');
+            btn.disabled = false;
+            btn.textContent = 'Fun';
+            clearFunTimers();
+            if (funTimer) window.clearTimeout(funTimer);
+            if (funCleanupTimer) window.clearTimeout(funCleanupTimer);
+            funTimer = null;
+            funCleanupTimer = null;
+            funRunning = false;
+        }
+
+        function startPopcornScene(overlay) {
+            const status = document.getElementById('fun-status');
+            status.textContent = 'Popcorn: snack time gone wrong';
+
+            const microwave = document.createElement('div');
+            microwave.className = 'fun-microwave';
+            overlay.appendChild(microwave);
+
+            const spawnPopcorn = () => {
+                if (!funRunning) return;
+                for (let i = 0; i < 7; i += 1) {
+                    const p = document.createElement('div');
+                    p.className = 'fun-popcorn';
+                    p.style.left = `${Math.random() * 100}%`;
+                    p.style.animationDuration = `${2 + Math.random() * 2}s`;
+                    overlay.appendChild(p);
+                    queueFunTimer(() => p.remove(), 4200);
+                }
+                queueFunTimer(spawnPopcorn, 380);
+            };
+
+            queueFunTimer(() => microwave.classList.add('shake'), 6500);
+            queueFunTimer(() => {
+                microwave.classList.remove('shake');
+                microwave.classList.add('explode');
+                status.textContent = 'Popcorn: microwave blast... done tone!';
+                playMicrowaveDoneTone();
+            }, 11000);
+            queueFunTimer(() => microwave.classList.remove('explode'), 14000);
+
+            spawnPopcorn();
+        }
+
+        function createStickman(x, y, color = '#f8fafc') {
+            const s = document.createElement('div');
+            s.className = 'stickman';
+            s.style.left = `${x}px`;
+            s.style.top = `${y}px`;
+            s.style.borderColor = color;
+            s.style.setProperty('--line', color);
+            return s;
+        }
+
+        function startFallGuysScene(overlay) {
+            const status = document.getElementById('fun-status');
+            status.textContent = 'Fall guys: browser basketball';
+            const actors = [];
+
+            for (let i = 0; i < 8; i += 1) {
+                const x = 40 + Math.random() * (window.innerWidth - 120);
+                const s = createStickman(x, -60 - i * 40, '#e2e8f0');
+                overlay.appendChild(s);
+                actors.push(s);
+                queueFunTimer(() => {
+                    s.animate([
+                        { transform: 'translateY(0px)' },
+                        { transform: `translateY(${window.innerHeight - 180}px)` }
+                    ], { duration: 1400 + Math.random() * 700, fill: 'forwards', easing: 'cubic-bezier(.2,.8,.2,1)' });
+                }, 120 * i);
+            }
+
+            const labels = ['Chr', 'Fx', 'Edg', 'Saf', 'Op'];
+            for (let i = 0; i < 6; i += 1) {
+                const ball = document.createElement('div');
+                ball.className = 'browser-ball';
+                ball.textContent = labels[i % labels.length];
+                ball.style.left = `${80 + i * ((window.innerWidth - 160) / 5)}px`;
+                ball.style.top = `${100 + (i % 2) * 30}px`;
+                overlay.appendChild(ball);
+                const keyframes = [
+                    { transform: 'translateY(0px) rotate(0deg)' },
+                    { transform: 'translateY(220px) rotate(180deg)' },
+                    { transform: 'translateY(0px) rotate(360deg)' }
+                ];
+                ball.animate(keyframes, { duration: 1800 + i * 160, iterations: 14, easing: 'ease-in-out' });
+            }
+        }
+
+        function startBattleRoyaleScene(overlay) {
+            const status = document.getElementById('fun-status');
+            status.textContent = 'Ba-rowser-royale: battle started';
+            const fighters = [];
+            const colors = ['#f8fafc', '#fca5a5', '#a5f3fc', '#fde68a', '#c4b5fd'];
+
+            for (let i = 0; i < 7; i += 1) {
+                const s = createStickman(40 + i * 60, window.innerHeight - 170 - (i % 2) * 26, colors[i % colors.length]);
+                overlay.appendChild(s);
+                fighters.push(s);
+                s.animate([
+                    { transform: 'translateX(0px)' },
+                    { transform: `translateX(${Math.random() * 220 - 90}px)` },
+                    { transform: 'translateX(0px)' }
+                ], { duration: 1800 + Math.random() * 1200, iterations: 12, easing: 'ease-in-out' });
+            }
+
+            // One stickman periodically "holds" cursor.
+            const hunter = fighters[0];
+            const cursorFollow = () => {
+                if (!funRunning || !hunter) return;
+                hunter.style.left = `${cursorState.x - 12}px`;
+                hunter.style.top = `${cursorState.y - 26}px`;
+                queueFunTimer(cursorFollow, 120);
+            };
+            queueFunTimer(cursorFollow, 1800);
+
+            queueFunTimer(() => {
+                const winner = fighters[1 + Math.floor(Math.random() * (fighters.length - 1))];
+                if (winner) {
+                    winner.style.transform = 'scale(1.3)';
+                    status.textContent = 'Ba-rowser-royale: winner declared';
+                }
+            }, 27500);
+        }
+
+        function startFunMode() {
+            if (funRunning) return;
+            funRunning = true;
+
+            const overlay = document.getElementById('fun-overlay');
+            overlay.classList.add('active');
+            const btn = document.getElementById('fun-btn');
+            btn.disabled = true;
+            btn.textContent = 'Running...';
+
+            const scenes = [startPopcornScene, startFallGuysScene, startBattleRoyaleScene];
+            const scene = scenes[Math.floor(Math.random() * scenes.length)];
+            scene(overlay);
+
+            funTimer = window.setTimeout(() => {
+                stopFunMode();
+            }, 30000);
         }
 
         function getGoogleFaviconUrl(rawUrl, size = 256) {
@@ -823,12 +1185,12 @@
                     const isMobile = profileName === 'mobile';
                     cy.style()
                         .selector('node')
-                        .style('width', isMobile ? 44 : 52)
-                        .style('height', isMobile ? 44 : 52)
-                        .style('font-size', isMobile ? '9px' : '11px')
-                        .style('text-max-width', isMobile ? '78px' : '95px')
+                        .style('width', isMobile ? 48 : 52)
+                        .style('height', isMobile ? 48 : 52)
+                        .style('font-size', isMobile ? '10px' : '11px')
+                        .style('text-max-width', isMobile ? '90px' : '95px')
                         .selector('edge')
-                        .style('width', isMobile ? 1.2 : 1.5)
+                        .style('width', isMobile ? 1.4 : 1.5)
                         .update();
                 }
 
@@ -948,7 +1310,8 @@
                             <p>${extract}</p>
                             ${metaHtml}
                             <hr>
-                            <a href="${nd.wikiUrl || nd.url}" target="_blank">Visit official page →</a>
+                            <a href="${nd.wikiUrl || ('https://en.wikipedia.org/wiki/' + (nd.wiki || ''))}" target="_blank">Read more on Wikipedia →</a><br>
+                            <a href="${nd.url}" target="_blank">Visit official page →</a>
                         `;
                         return;
                     }
@@ -964,7 +1327,8 @@
                             <p>${extract}</p>
                             ${metaHtml}
                             <hr>
-                            <a href="${wikiLink}" target="_blank">Read more on Wikipedia →</a>
+                            <a href="${wikiLink}" target="_blank">Read more on Wikipedia →</a><br>
+                            <a href="${nd.url}" target="_blank">Visit official page →</a>
                         `;
                     } catch (e) {
                         document.getElementById('content').innerText = 'Failed to load Wikipedia data.';
