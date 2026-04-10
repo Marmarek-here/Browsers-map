@@ -36,12 +36,22 @@
             transition: opacity 0.12s ease, transform 0.08s ease;
             mix-blend-mode: screen;
         }
+        body.theme-light #custom-cursor,
+        body.light-mode #custom-cursor {
+            border-color: rgba(3, 105, 161, 0.92);
+            mix-blend-mode: normal;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.9);
+        }
         #custom-cursor::after {
             content: '';
             position: absolute;
             inset: 7px;
             border-radius: 50%;
             background: rgba(56, 189, 248, 0.22);
+        }
+        body.theme-light #custom-cursor::after,
+        body.light-mode #custom-cursor::after {
+            background: rgba(3, 105, 161, 0.2);
         }
         #custom-cursor.pressed {
             transform: translate(-50%, -50%) scale(0.84);
@@ -1074,11 +1084,13 @@
                         // No wiki — show custom description and link to homepage
                         const extract = nd.wikiNote || 'No description available.';
                         const metaHtml = buildMetaHtml(nd);
+                        const wikiHref = nd.wikiUrl || (nd.wiki ? ('https://en.wikipedia.org/wiki/' + nd.wiki) : '');
+                        const wikiHtml = wikiHref ? `<a href="${wikiHref}" target="_blank">Read more on Wikipedia →</a><br>` : '';
                         document.getElementById('content').innerHTML = `
                             <p>${extract}</p>
                             ${metaHtml}
                             <hr>
-                            <a href="${nd.wikiUrl || ('https://en.wikipedia.org/wiki/' + (nd.wiki || ''))}" target="_blank">Read more on Wikipedia →</a><br>
+                            ${wikiHtml}
                             <a href="${nd.url}" target="_blank">Visit official page →</a>
                         `;
                         return;

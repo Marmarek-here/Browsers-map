@@ -309,9 +309,11 @@
       "data": {
         "id": "thorium",
         "label": "Thorium Browser",
-        "wiki": "Thorium_(web_browser)",
+        "wiki": "",
         "url": "https://thorium.rocks",
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://thorium.rocks",
+        "noWiki": true,
+        "wikiNote": "Thorium Browser is a performance-focused Chromium fork maintained by Alex313031. It aims to make Chromium-based browsing faster through aggressive compiler optimizations, tuned build flags, and support for modern CPU instruction sets while keeping compatibility with the broader Chromium ecosystem.",
         "author": "Alex313031",
         "currentVersion": "Stable channel (rolling)",
         "eol": "Active",
