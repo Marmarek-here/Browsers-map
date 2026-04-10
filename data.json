@@ -6,7 +6,7 @@
         "label": "Mosaic",
         "wiki": "Mosaic_(web_browser)",
         "url": "https://ncsa.illinois.edu",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Mosaic.png/128px-Mosaic.png",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://ncsa.illinois.edu",
         "author": "NCSA",
         "currentVersion": "Discontinued",
         "eol": "EoL"
@@ -117,7 +117,7 @@
         "label": "Firefox",
         "wiki": "Firefox",
         "url": "https://mozilla.org/firefox",
-        "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a0/Firefox_logo%2C_2019.svg/128px-Firefox_logo%2C_2019.svg.png",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://mozilla.org/firefox",
         "author": "Mozilla",
         "currentVersion": "Stable channel (rolling)",
         "eol": "Active"
@@ -204,7 +204,7 @@
         "label": "Zen Browser",
         "wiki": "Zen_Browser",
         "url": "https://zen-browser.app",
-        "logo": "https://zen-browser.app/icon.svg",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://zen-browser.app",
         "author": "Zen Community",
         "currentVersion": "Stable channel (rolling)",
         "eol": "Active"
@@ -228,7 +228,7 @@
         "label": "Waterfox",
         "wiki": "Waterfox",
         "url": "https://www.waterfox.net",
-        "logo": "https://www.waterfox.net/img/waterfox-32.png",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.waterfox.net",
         "author": "Waterfox Ltd",
         "currentVersion": "Stable channel (rolling)",
         "eol": "Active"

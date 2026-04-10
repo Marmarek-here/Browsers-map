@@ -15,6 +15,7 @@
             background: #0f172a;
             color: #f8fafc;
             overflow: hidden;
+            position: relative;
         }
         #cy {
             flex-grow: 1;
@@ -33,6 +34,11 @@
             border-left: 1px solid #334155;
             opacity: 0;
             transform: translateX(18px);
+            position: absolute;
+            top: 0;
+            right: 0;
+            height: 100%;
+            z-index: 15;
         }
         #sidebar.sidebar-open {
             animation: sidebarIn 0.28s ease-out forwards;
@@ -60,79 +66,121 @@
                 opacity: 0;
             }
         }
-        body.dark-mode {
+        body.dark-mode,
+        body.theme-dark-standard {
             background: #0f172a;
             color: #f8fafc;
         }
-        body.dark-mode #sidebar {
+        body.dark-mode #sidebar,
+        body.theme-dark-standard #sidebar {
             background: #1e293b;
             border-left-color: #334155;
         }
-        body.dark-mode #sidebar-header {
+        body.dark-mode #sidebar-header,
+        body.theme-dark-standard #sidebar-header {
             border-bottom-color: #334155;
         }
-        body.dark-mode #content {
+        body.dark-mode #content,
+        body.theme-dark-standard #content {
             color: #cbd5e1;
         }
-        body.light-mode {
+        body.theme-dark-oled {
+            background: #000000;
+            color: #f8fafc;
+        }
+        body.theme-dark-oled #sidebar {
+            background: #0b0b0b;
+            border-left-color: #1f2937;
+        }
+        body.theme-dark-oled #sidebar-header {
+            border-bottom-color: #1f2937;
+        }
+        body.theme-dark-oled #content {
+            color: #d1d5db;
+        }
+        body.theme-dark-oled #legend {
+            background: rgba(12, 12, 12, 0.92);
+            border-color: #1f2937;
+            color: #9ca3af;
+        }
+        body.light-mode,
+        body.theme-light {
             background: #f8fafc;
             color: #0f172a;
         }
-        body.light-mode #sidebar {
+        body.light-mode #sidebar,
+        body.theme-light #sidebar {
             background: #f1f5f9;
             border-left-color: #cbd5e1;
         }
-        body.light-mode #sidebar-header {
+        body.light-mode #sidebar-header,
+        body.theme-light #sidebar-header {
             border-bottom-color: #cbd5e1;
         }
-        body.light-mode #content {
+        body.light-mode #content,
+        body.theme-light #content {
             color: #334155;
         }
-        body.light-mode #title {
+        body.light-mode #title,
+        body.theme-light #title {
             color: #0369a1;
         }
-        body.light-mode #close-btn {
+        body.light-mode #close-btn,
+        body.theme-light #close-btn {
             color: #475569;
         }
-        body.light-mode #close-btn:hover {
+        body.light-mode #close-btn:hover,
+        body.theme-light #close-btn:hover {
             color: #0f172a;
             background: #cbd5e1;
         }
-        body.light-mode #sidebar-logo-wrap {
+        body.light-mode #sidebar-logo-wrap,
+        body.theme-light #sidebar-logo-wrap {
             background: #e2e8f0;
         }
-        body.light-mode #content hr {
+        body.light-mode #content hr,
+        body.theme-light #content hr {
             border-top-color: #cbd5e1;
         }
-        body.light-mode #sidebar a {
+        body.light-mode #sidebar a,
+        body.theme-light #sidebar a {
             color: #0369a1;
         }
-        body.light-mode #cy {
+        body.light-mode #cy,
+        body.theme-light #cy {
             background: #f8fafc;
         }
-        body.light-mode #legend {
+        body.light-mode #legend,
+        body.theme-light #legend {
             background: rgba(241, 245, 249, 0.95);
             border-color: #cbd5e1;
             color: #334155;
         }
-        body.light-mode #placeholder {
+        body.light-mode #placeholder,
+        body.theme-light #placeholder {
             color: #64748b;
         }
-        body.light-mode #placeholder span {
+        body.light-mode #placeholder span,
+        body.theme-light #placeholder span {
             color: #94a3b8 !important;
         }
-        body.light-mode .btn-add {
+        body.light-mode .btn-add,
+        body.theme-light .btn-add {
             background: #0ea5e9;
             color: #ffffff;
         }
-        body.light-mode .btn-add:hover {
+        body.light-mode .btn-add:hover,
+        body.theme-light .btn-add:hover {
             background: #0284c7;
         }
-        #theme-toggle {
+        #theme-select-wrap {
             position: absolute;
-            top: 16px;
-            right: 16px;
-            padding: 8px 14px;
+            top: 140px;
+            left: 16px;
+            z-index: 11;
+        }
+        #theme-select {
+            padding: 8px 12px;
             background: #334155;
             color: #f8fafc;
             border: none;
@@ -140,27 +188,24 @@
             cursor: pointer;
             font-size: 0.9em;
             font-weight: 500;
-            z-index: 11;
-            transition: background 0.3s, right 0.25s ease;
+            transition: background 0.3s;
         }
-        #theme-toggle:hover {
+        #theme-select:hover {
             background: #475569;
         }
-        body.sidebar-visible #theme-toggle {
-            right: 484px;
-        }
-        body.light-mode #theme-toggle {
+        body.light-mode #theme-select,
+        body.theme-light #theme-select {
             background: #e2e8f0;
             color: #0f172a;
             border: 1px solid #cbd5e1;
         }
-        body.light-mode #theme-toggle:hover {
+        body.light-mode #theme-select:hover,
+        body.theme-light #theme-select:hover {
             background: #cbd5e1;
         }
         @media (max-width: 980px) {
-            body.sidebar-visible #theme-toggle {
-                right: 16px;
-                top: 64px;
+            #theme-select-wrap {
+                top: 86px;
             }
         }
         #sidebar-header {
@@ -295,7 +340,13 @@
 
     <div id="placeholder">Click on a browser node to see details<br><span style="font-size:0.85em;color:#334155">Scroll to zoom · Drag to pan</span></div>
     <div id="cy"></div>
-    <button id="theme-toggle" onclick="toggleTheme()">🌙 Dark</button>
+    <div id="theme-select-wrap">
+        <select id="theme-select" onchange="changeTheme(this.value)">
+            <option value="dark-standard">Dark (Standard)</option>
+            <option value="dark-oled">Dark (OLED)</option>
+            <option value="light">Light</option>
+        </select>
+    </div>
 
     <div id="legend">
         <div><span class="legend-dot" style="background:#38bdf8"></span> Blink-based</div>
@@ -446,13 +497,16 @@
                 sidebar.style.display = 'none';
                 sidebar.classList.remove('sidebar-closing');
             }, 220);
-            document.getElementById('placeholder').style.display = 'block';
+            const hintDismissed = localStorage.getItem('mapHintDismissed') === '1';
+            document.getElementById('placeholder').style.display = hintDismissed ? 'none' : 'block';
         }
 
         async function init() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
+                const hintDismissed = localStorage.getItem('mapHintDismissed') === '1';
+                document.getElementById('placeholder').style.display = hintDismissed ? 'none' : 'block';
 
                 // Auto-fill metadata for every node to keep fields complete.
                 data.nodes.forEach((entry) => {
@@ -540,7 +594,7 @@
                 function applyThemeToGraph(theme) {
                     const isLight = theme === 'light';
                     const nodeTextColor = isLight ? '#0f172a' : '#f8fafc';
-                    const edgeColor = isLight ? '#94a3b8' : '#334155';
+                    const edgeColor = isLight ? '#94a3b8' : (theme === 'dark-oled' ? '#27272a' : '#334155');
                     cy.style()
                         .selector('node')
                         .style('color', nodeTextColor)
@@ -558,6 +612,7 @@
                     const engineStyle = engineColors[engine] || { bg: '#1e293b', text: '#94a3b8' };
 
                     document.getElementById('placeholder').style.display = 'none';
+                    localStorage.setItem('mapHintDismissed', '1');
                     const sidebar = document.getElementById('sidebar');
                     sidebar.style.display = 'flex';
                     sidebar.classList.remove('sidebar-open');
@@ -622,7 +677,7 @@
                     if (evt.target === cy) closeSidebar();
                 });
 
-                const activeTheme = document.body.classList.contains('light-mode') ? 'light' : 'dark';
+                const activeTheme = document.body.classList.contains('theme-light') ? 'light' : (document.body.classList.contains('theme-dark-oled') ? 'dark-oled' : 'dark-standard');
                 applyThemeToGraph(activeTheme);
 
                 window.applyThemeToGraph = applyThemeToGraph;
@@ -635,41 +690,39 @@
 
         init();
 
-        function toggleTheme() {
+        function changeTheme(theme) {
             const body = document.body;
-            const themeToggle = document.getElementById('theme-toggle');
-            const isDarkMode = body.classList.contains('dark-mode');
-            
-            if (isDarkMode) {
-                body.classList.remove('dark-mode');
-                body.classList.add('light-mode');
-                themeToggle.textContent = '☀️ Light';
+            body.classList.remove('dark-mode', 'light-mode', 'theme-dark-standard', 'theme-dark-oled', 'theme-light');
+
+            if (theme === 'light') {
+                body.classList.add('theme-light');
                 localStorage.setItem('theme', 'light');
+                localStorage.setItem('themePreference', 'light');
                 if (window.applyThemeToGraph) window.applyThemeToGraph('light');
-            } else {
-                body.classList.remove('light-mode');
-                body.classList.add('dark-mode');
-                themeToggle.textContent = '🌙 Dark';
-                localStorage.setItem('theme', 'dark');
-                if (window.applyThemeToGraph) window.applyThemeToGraph('dark');
+                return;
             }
+
+            if (theme === 'dark-oled') {
+                body.classList.add('theme-dark-oled');
+                localStorage.setItem('theme', 'dark');
+                localStorage.setItem('themePreference', 'dark-oled');
+                if (window.applyThemeToGraph) window.applyThemeToGraph('dark-oled');
+                return;
+            }
+
+            body.classList.add('theme-dark-standard');
+            localStorage.setItem('theme', 'dark');
+            localStorage.setItem('themePreference', 'dark-standard');
+            if (window.applyThemeToGraph) window.applyThemeToGraph('dark-standard');
         }
 
         // Load theme preference
         window.addEventListener('DOMContentLoaded', function() {
-            const theme = localStorage.getItem('theme') || 'dark';
-            const body = document.body;
-            const themeToggle = document.getElementById('theme-toggle');
-            
-            if (theme === 'light') {
-                body.classList.add('light-mode');
-                themeToggle.textContent = '☀️ Light';
-                if (window.applyThemeToGraph) window.applyThemeToGraph('light');
-            } else {
-                body.classList.add('dark-mode');
-                themeToggle.textContent = '🌙 Dark';
-                if (window.applyThemeToGraph) window.applyThemeToGraph('dark');
-            }
+            const select = document.getElementById('theme-select');
+            const legacyTheme = localStorage.getItem('theme');
+            const storedTheme = localStorage.getItem('themePreference') || (legacyTheme === 'light' ? 'light' : 'dark-standard');
+            select.value = storedTheme;
+            changeTheme(storedTheme);
         });
     </script>
 </body>
