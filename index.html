@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browsers Tree</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.26.0/cytoscape.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dagre/0.8.5/dagre.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape-dagre/2.5.0/cytoscape-dagre.min.js"></script>
     <style>
         * { box-sizing: border-box; }
         body {
@@ -667,11 +669,14 @@
             }
 
             return {
-                name: 'breadthfirst',
-                directed: true,
+                name: 'dagre',
+                rankDir: 'LR',
+                nodeSep: 38,
+                rankSep: 110,
+                edgeSep: 10,
+                ranker: 'tight-tree',
                 padding: 56,
-                spacingFactor: 0.8,
-                avoidOverlap: true,
+                fit: true,
             };
         }
 
@@ -1090,7 +1095,6 @@
                     applyResponsiveGraphStyles(nextProfile);
                     const layout = cy.layout(getLayoutOptions(nextProfile));
                     layout.run();
-                    setTimeout(() => adjustSpecialPositions(cy, nextProfile), 120);
                 }
 
                 function clearLineageFocus() {
@@ -1132,7 +1136,6 @@
 
                 applyResponsiveGraphStyles(profile);
                 setupCustomCursor();
-                setTimeout(() => adjustSpecialPositions(cy, profile), 120);
 
                 cy.on('tap', 'node', async function(evt) {
                     const node = evt.target;
