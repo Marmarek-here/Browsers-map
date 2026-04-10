@@ -1,4 +1,4 @@
-# Browsers Genealogy Map
+# Browsers Tree
 
 An interactive visualization of web browser genealogy and engine relationships.
 
