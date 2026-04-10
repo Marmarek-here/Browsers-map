@@ -562,7 +562,7 @@
         <button class="legend-item" data-group="presto"><span class="legend-dot" style="background:#ef4444"></span>Presto-based</button>
         <button class="legend-item" data-group="mosaic"><span class="legend-dot" style="background:#d97706"></span>Mosaic lineage</button>
         <button class="legend-item" data-group="independent"><span class="legend-dot" style="background:#f59e0b"></span>Independent engine</button>
-        <button class="legend-item" data-group="legacy"><span class="legend-dot" style="background:#94a3b8"></span>Engine / Legacy</button>
+        <button class="legend-item" data-group="legacy"><span class="legend-dot" style="background:#fb923c"></span>Trident / Legacy</button>
     </div>
 
     <div id="sidebar">
@@ -596,9 +596,10 @@
             goanna: '#ec4899', palemoon: '#ec4899', basilisk: '#ec4899',
             presto: '#ef4444', 'opera-presto': '#ef4444',
             netscape: '#d97706', mosaic: '#d97706',
-            webkit: '#34d399', helium: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399',
+            webkit: '#34d399', helium: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399', 'ios-wkwebview': '#34d399', 'macos-webview': '#34d399',
             ladybird: '#f59e0b', netsurf: '#f59e0b', flow: '#f59e0b', dillo: '#f59e0b',
-            ie: '#94a3b8', trident: '#94a3b8', edgehtml: '#94a3b8', 'edge-legacy': '#94a3b8', 'windows-webbrowser': '#94a3b8', 'windows-webview2': '#38bdf8',
+            ie: '#fb923c', trident: '#fb923c', edgehtml: '#fb923c', 'edge-legacy': '#fb923c', 'windows-webbrowser': '#fb923c', 'windows-webview2': '#38bdf8',
+            'android-webview': '#38bdf8',
         };
 
         const engineLabels = {
@@ -608,9 +609,10 @@
             gecko: 'Gecko engine', goanna: 'Goanna engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', basilisk: 'Goanna', zen: 'Gecko', floorp: 'Gecko', iceweasel: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
             netscape: 'Mosaic lineage',
-            webkit: 'WebKit engine', helium: 'WebKit', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine',
+            webkit: 'WebKit engine', helium: 'WebKit', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine', 'ios-wkwebview': 'WebKit', 'macos-webview': 'WebKit',
+            'android-webview': 'Blink',
             presto: 'Presto engine', 'opera-presto': 'Presto', ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
-            mosaic: 'NCSA Mosaic', ie: 'Trident', trident: 'Trident engine', edgehtml: 'EdgeHTML engine', 'edge-legacy': 'EdgeHTML',
+            mosaic: 'NCSA Mosaic', ie: 'Trident', trident: 'Trident engine', edgehtml: 'EdgeHTML engine', 'edge-legacy': 'EdgeHTML', 'windows-webbrowser': 'Trident',
         };
 
         const engineColors = {
@@ -630,7 +632,10 @@
             'Flow': { bg: '#2a1f07', text: '#f59e0b' },
             'Dillo': { bg: '#2a1f07', text: '#f59e0b' },
             'NCSA Mosaic': { bg: '#3b2308', text: '#f59e0b' },
-            'Trident': { bg: '#1e293b', text: '#94a3b8' },
+            'Trident': { bg: '#3b1f0a', text: '#fb923c' },
+            'Trident engine': { bg: '#3b1f0a', text: '#fb923c' },
+            'EdgeHTML engine': { bg: '#3b1f0a', text: '#fb923c' },
+            'EdgeHTML': { bg: '#3b1f0a', text: '#fb923c' },
         };
 
         let activeLegendGroup = null;
