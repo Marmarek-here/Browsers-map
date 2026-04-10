@@ -173,22 +173,17 @@
         body.theme-light .btn-add:hover {
             background: #0284c7;
         }
-        #theme-select-wrap {
-            position: absolute;
-            top: 140px;
-            left: 16px;
-            z-index: 11;
-        }
         #theme-select {
             padding: 8px 12px;
-            background: #334155;
+            background: rgba(15, 23, 42, 0.72);
             color: #f8fafc;
-            border: none;
+            border: 1px solid #334155;
             border-radius: 6px;
             cursor: pointer;
             font-size: 0.9em;
             font-weight: 500;
-            transition: background 0.3s;
+            min-width: 160px;
+            transition: background 0.3s, border-color 0.3s;
         }
         #theme-select:hover {
             background: #475569;
@@ -202,11 +197,6 @@
         body.light-mode #theme-select:hover,
         body.theme-light #theme-select:hover {
             background: #cbd5e1;
-        }
-        @media (max-width: 980px) {
-            #theme-select-wrap {
-                top: 86px;
-            }
         }
         #sidebar-header {
             display: flex;
@@ -318,21 +308,119 @@
             font-size: 0.76em;
             color: #94a3b8;
             z-index: 10;
-            pointer-events: none;
+            pointer-events: auto;
             backdrop-filter: blur(4px);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            min-width: 250px;
+            max-width: 290px;
         }
-        #legend div {
+        #legend-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 4px;
+        }
+        #legend-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: inherit;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+        .legend-item {
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-bottom: 5px;
+            margin: 0;
+            width: 100%;
+            padding: 6px 8px;
+            border: 1px solid transparent;
+            border-radius: 8px;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            text-align: left;
+            transition: background 0.2s, border-color 0.2s, color 0.2s;
         }
-        #legend div:last-child { margin-bottom: 0; }
+        .legend-item:hover {
+            background: rgba(148, 163, 184, 0.12);
+            border-color: rgba(148, 163, 184, 0.22);
+        }
+        .legend-item.active {
+            background: rgba(56, 189, 248, 0.16);
+            border-color: rgba(56, 189, 248, 0.3);
+            color: #f8fafc;
+        }
+        body.theme-light .legend-item.active,
+        body.light-mode .legend-item.active {
+            color: #0f172a;
+            background: rgba(14, 165, 233, 0.14);
+            border-color: rgba(14, 165, 233, 0.28);
+        }
         .legend-dot {
             width: 11px;
             height: 11px;
             border-radius: 50%;
             flex-shrink: 0;
+        }
+        body.theme-dark-standard .btn-add,
+        body.dark-mode .btn-add {
+            background: #38bdf8;
+            color: #082f49;
+        }
+        body.theme-dark-standard .btn-add:hover,
+        body.dark-mode .btn-add:hover {
+            background: #7dd3fc;
+        }
+        body.theme-dark-oled .btn-add {
+            background: #22d3ee;
+            color: #042f2e;
+        }
+        body.theme-dark-oled .btn-add:hover {
+            background: #67e8f9;
+        }
+        body.mobile-layout #legend {
+            top: 12px;
+            left: 12px;
+            right: 12px;
+            max-width: none;
+            min-width: 0;
+            font-size: 0.73em;
+        }
+        body.mobile-layout #legend-header {
+            flex-direction: column;
+            align-items: stretch;
+        }
+        body.mobile-layout #theme-select {
+            width: 100%;
+        }
+        body.mobile-layout #sidebar {
+            width: 100%;
+            min-width: 0;
+            padding: 24px 20px 96px;
+        }
+        body.mobile-layout #sidebar-logo-wrap {
+            width: 46px;
+            height: 46px;
+        }
+        body.mobile-layout #sidebar-logo-wrap img {
+            width: 38px;
+            height: 38px;
+        }
+        body.mobile-layout #title {
+            font-size: 1.2em;
+        }
+        body.mobile-layout #content {
+            font-size: 0.9em;
+        }
+        body.mobile-layout .btn-add {
+            left: 12px;
+            right: 12px;
+            width: auto;
+            bottom: 12px;
         }
     </style>
 </head>
@@ -340,20 +428,23 @@
 
     <div id="placeholder">Click on a browser node to see details<br><span style="font-size:0.85em;color:#334155">Scroll to zoom · Drag to pan</span></div>
     <div id="cy"></div>
-    <div id="theme-select-wrap">
-        <select id="theme-select" onchange="changeTheme(this.value)">
-            <option value="dark-standard">Dark (Standard)</option>
-            <option value="dark-oled">Dark (OLED)</option>
-            <option value="light">Light</option>
-        </select>
-    </div>
 
     <div id="legend">
-        <div><span class="legend-dot" style="background:#38bdf8"></span> Blink-based</div>
-        <div><span class="legend-dot" style="background:#a78bfa"></span> Gecko-based</div>
-        <div><span class="legend-dot" style="background:#34d399"></span> WebKit-based</div>
-        <div><span class="legend-dot" style="background:#f59e0b"></span> Independent engine</div>
-        <div><span class="legend-dot" style="background:#94a3b8"></span> Engine / Legacy</div>
+        <div id="legend-header">
+            <span id="legend-title">Families</span>
+            <select id="theme-select" onchange="changeTheme(this.value)">
+                <option value="dark-standard">Dark (Standard)</option>
+                <option value="dark-oled">Dark (OLED)</option>
+                <option value="light">Light</option>
+            </select>
+        </div>
+        <button class="legend-item" data-group="blink"><span class="legend-dot" style="background:#38bdf8"></span>Blink-based</button>
+        <button class="legend-item" data-group="gecko"><span class="legend-dot" style="background:#a78bfa"></span>Gecko-based</button>
+        <button class="legend-item" data-group="webkit"><span class="legend-dot" style="background:#34d399"></span>WebKit-based</button>
+        <button class="legend-item" data-group="presto"><span class="legend-dot" style="background:#ef4444"></span>Presto-based</button>
+        <button class="legend-item" data-group="mosaic"><span class="legend-dot" style="background:#d97706"></span>Mosaic lineage</button>
+        <button class="legend-item" data-group="independent"><span class="legend-dot" style="background:#f59e0b"></span>Independent engine</button>
+        <button class="legend-item" data-group="legacy"><span class="legend-dot" style="background:#94a3b8"></span>Engine / Legacy</button>
     </div>
 
     <div id="sidebar">
@@ -383,10 +474,11 @@
             ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8', arc: '#38bdf8', kiwi: '#38bdf8', min: '#38bdf8', samsung: '#38bdf8', blink: '#38bdf8',
             gecko: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
             librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa', zen: '#a78bfa', icecat: '#a78bfa', waterfox: '#a78bfa',
-            netscape: '#a78bfa',
+            presto: '#ef4444', 'opera-presto': '#ef4444',
+            netscape: '#d97706', mosaic: '#d97706',
             webkit: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399',
             ladybird: '#f59e0b', netsurf: '#f59e0b', flow: '#f59e0b', dillo: '#f59e0b',
-            mosaic: '#94a3b8', ie: '#94a3b8', trident: '#94a3b8', edgehtml: '#94a3b8', 'edge-legacy': '#94a3b8',
+            ie: '#94a3b8', trident: '#94a3b8', edgehtml: '#94a3b8', 'edge-legacy': '#94a3b8', 'windows-webbrowser': '#94a3b8', 'windows-webview2': '#38bdf8',
         };
 
         const engineLabels = {
@@ -395,9 +487,9 @@
             ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink', arc: 'Blink', kiwi: 'Blink', min: 'Blink', samsung: 'Blink', blink: 'Blink engine',
             gecko: 'Gecko engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', zen: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
-            netscape: 'Gecko/Trident',
+            netscape: 'Mosaic lineage',
             webkit: 'WebKit engine', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine',
-            ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
+            presto: 'Presto engine', 'opera-presto': 'Presto', ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
             mosaic: 'NCSA Mosaic', ie: 'Trident', trident: 'Trident engine', edgehtml: 'EdgeHTML engine', 'edge-legacy': 'EdgeHTML',
         };
 
@@ -410,13 +502,88 @@
             'Gecko/Trident': { bg: '#2e1b5e', text: '#a78bfa' },
             'WebKit': { bg: '#0f2e23', text: '#34d399' },
             'WebKit engine': { bg: '#0f2e23', text: '#34d399' },
+            'Presto': { bg: '#3a1114', text: '#f87171' },
+            'Presto engine': { bg: '#3a1114', text: '#f87171' },
+            'Mosaic lineage': { bg: '#3b2308', text: '#f59e0b' },
             'LibWeb': { bg: '#2a1f07', text: '#f59e0b' },
             'NetSurf': { bg: '#2a1f07', text: '#f59e0b' },
             'Flow': { bg: '#2a1f07', text: '#f59e0b' },
             'Dillo': { bg: '#2a1f07', text: '#f59e0b' },
-            'NCSA Mosaic': { bg: '#1e293b', text: '#94a3b8' },
+            'NCSA Mosaic': { bg: '#3b2308', text: '#f59e0b' },
             'Trident': { bg: '#1e293b', text: '#94a3b8' },
         };
+
+        let activeLegendGroup = null;
+
+        function detectOs() {
+            const ua = navigator.userAgent;
+            if (/Android/i.test(ua)) return 'android';
+            if (/iPhone|iPad|iPod/i.test(ua)) return 'ios';
+            if (/Windows/i.test(ua)) return 'windows';
+            if (/Mac OS X|Macintosh/i.test(ua)) return 'macos';
+            return 'linux';
+        }
+
+        function getViewportProfile() {
+            const mobileOs = /Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent);
+            return mobileOs || window.innerWidth < 920 ? 'mobile' : 'desktop';
+        }
+
+        function applyViewportProfile() {
+            const profile = getViewportProfile();
+            document.body.classList.toggle('mobile-layout', profile === 'mobile');
+            document.body.classList.toggle('desktop-layout', profile === 'desktop');
+            document.body.dataset.os = detectOs();
+            return profile;
+        }
+
+        function getLayoutOptions(profile) {
+            if (profile === 'mobile') {
+                return {
+                    name: 'breadthfirst',
+                    directed: true,
+                    padding: 28,
+                    spacingFactor: 0.62,
+                    avoidOverlap: true,
+                };
+            }
+
+            return {
+                name: 'breadthfirst',
+                directed: true,
+                padding: 56,
+                spacingFactor: 0.8,
+                avoidOverlap: true,
+            };
+        }
+
+        function getLegendGroup(nodeId) {
+            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
+            if (['firefox', 'tor', 'librewolf', 'mullvad', 'palemoon', 'zen', 'icecat', 'waterfox', 'gecko'].includes(nodeId)) return 'gecko';
+            if (['webkit', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
+            if (['presto', 'opera-presto'].includes(nodeId)) return 'presto';
+            if (['mosaic', 'netscape'].includes(nodeId)) return 'mosaic';
+            if (['ie', 'trident', 'edgehtml', 'edge-legacy', 'windows-webbrowser'].includes(nodeId)) return 'legacy';
+            return 'independent';
+        }
+
+        function adjustSpecialPositions(cy, profile) {
+            const edgeNode = cy.getElementById('edge');
+            const webviewNode = cy.getElementById('windows-webview2');
+
+            if (!edgeNode.length || !webviewNode.length) return;
+
+            const edgePos = edgeNode.position();
+            const xOffset = profile === 'mobile' ? 74 : 112;
+            const yOffset = profile === 'mobile' ? 60 : 72;
+            webviewNode.position({ x: edgePos.x + xOffset, y: edgePos.y + yOffset });
+        }
+
+        function setLegendActive(group) {
+            document.querySelectorAll('.legend-item').forEach((item) => {
+                item.classList.toggle('active', item.dataset.group === group);
+            });
+        }
 
         // Favicon with CDN fallback
         function getLogoUrl(nodeData) {
@@ -430,14 +597,14 @@
 
         function getAutoNodeMeta(nodeData) {
             const metaById = {
-                chrome: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
-                chromium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
-                firefox: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
-                edge: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
-                safari: { currentVersion: 'Bundled with latest macOS/iOS', eol: 'Active' },
-                opera: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                chrome: { currentVersion: '146.0.7680.180', eol: 'Active' },
+                chromium: { currentVersion: 'Unknown', eol: 'Active' },
+                firefox: { currentVersion: '149.0.2', eol: 'Active' },
+                edge: { currentVersion: '146.0.3856.109', eol: 'Active' },
+                safari: { currentVersion: '26.0', eol: 'Active' },
+                opera: { currentVersion: '130.0.5847.12', eol: 'Active' },
                 brave: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
-                vivaldi: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                vivaldi: { currentVersion: '7.9.3970.45', eol: 'Active' },
                 arc: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 tor: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 librewolf: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
@@ -507,12 +674,15 @@
                 const data = await response.json();
                 const hintDismissed = localStorage.getItem('mapHintDismissed') === '1';
                 document.getElementById('placeholder').style.display = hintDismissed ? 'none' : 'block';
+                const profile = applyViewportProfile();
 
                 // Auto-fill metadata for every node to keep fields complete.
                 data.nodes.forEach((entry) => {
                     const d = entry.data;
                     const autoMeta = getAutoNodeMeta(d);
-                    if (!d.currentVersion) d.currentVersion = autoMeta.currentVersion;
+                    if (!d.currentVersion || ['Stable channel (rolling)', 'Bundled with latest macOS/iOS'].includes(d.currentVersion)) {
+                        d.currentVersion = autoMeta.currentVersion;
+                    }
                     if (!d.eol) d.eol = autoMeta.eol;
                 });
 
@@ -557,6 +727,38 @@
                             }
                         },
                         {
+                            selector: 'node.highlighted',
+                            style: {
+                                'opacity': 1,
+                                'text-opacity': 1,
+                                'border-width': 4,
+                                'shadow-blur': 16,
+                                'shadow-opacity': 0.35,
+                                'shadow-color': function(node) { return nodeColors[node.data('id')] || '#38bdf8'; }
+                            }
+                        },
+                        {
+                            selector: 'node.dimmed',
+                            style: {
+                                'opacity': 0.16,
+                                'text-opacity': 0.18,
+                                'border-opacity': 0.14
+                            }
+                        },
+                        {
+                            selector: 'edge.highlighted',
+                            style: {
+                                'opacity': 0.82,
+                                'width': 2.2
+                            }
+                        },
+                        {
+                            selector: 'edge.dimmed',
+                            style: {
+                                'opacity': 0.08
+                            }
+                        },
+                        {
                             selector: 'node[id = "ungoogled"]',
                             style: {
                                 'background-image': 'none',
@@ -578,18 +780,25 @@
                             style: { 'overlay-opacity': 0 }
                         }
                     ],
-                    layout: {
-                        name: 'breadthfirst',
-                        directed: true,
-                        padding: 60,
-                        spacingFactor: 0.8,
-                        avoidOverlap: true,
-                    },
+                    layout: getLayoutOptions(profile),
                     userZoomingEnabled: true,
                     wheelSensitivity: 0.1,
                     minZoom: 0.1,
                     maxZoom: 3
                 });
+
+                function applyResponsiveGraphStyles(profileName) {
+                    const isMobile = profileName === 'mobile';
+                    cy.style()
+                        .selector('node')
+                        .style('width', isMobile ? 44 : 52)
+                        .style('height', isMobile ? 44 : 52)
+                        .style('font-size', isMobile ? '9px' : '11px')
+                        .style('text-max-width', isMobile ? '78px' : '95px')
+                        .selector('edge')
+                        .style('width', isMobile ? 1.2 : 1.5)
+                        .update();
+                }
 
                 function applyThemeToGraph(theme) {
                     const isLight = theme === 'light';
@@ -603,6 +812,59 @@
                         .style('target-arrow-color', edgeColor)
                         .update();
                 }
+
+                function applyLegendFilter(group) {
+                    if (activeLegendGroup === group) {
+                        activeLegendGroup = null;
+                        setLegendActive(null);
+                        cy.batch(() => {
+                            cy.nodes().removeClass('dimmed highlighted');
+                            cy.edges().removeClass('dimmed highlighted');
+                        });
+                        return;
+                    }
+
+                    activeLegendGroup = group;
+                    setLegendActive(group);
+                    const matchingNodes = cy.nodes().filter((node) => getLegendGroup(node.id()) === group);
+
+                    cy.batch(() => {
+                        cy.nodes().removeClass('dimmed highlighted');
+                        cy.edges().removeClass('dimmed highlighted');
+                        cy.nodes().not(matchingNodes).addClass('dimmed');
+                        matchingNodes.addClass('highlighted');
+                        cy.edges().forEach((edge) => {
+                            const sourceMatch = getLegendGroup(edge.source().id()) === group;
+                            const targetMatch = getLegendGroup(edge.target().id()) === group;
+                            if (sourceMatch || targetMatch) {
+                                edge.addClass('highlighted');
+                            } else {
+                                edge.addClass('dimmed');
+                            }
+                        });
+                    });
+                }
+
+                function runResponsiveLayout() {
+                    const nextProfile = applyViewportProfile();
+                    applyResponsiveGraphStyles(nextProfile);
+                    const layout = cy.layout(getLayoutOptions(nextProfile));
+                    layout.run();
+                    setTimeout(() => adjustSpecialPositions(cy, nextProfile), 120);
+                }
+
+                document.querySelectorAll('.legend-item').forEach((item) => {
+                    item.addEventListener('click', () => applyLegendFilter(item.dataset.group));
+                });
+
+                let resizeTimer = null;
+                window.addEventListener('resize', () => {
+                    window.clearTimeout(resizeTimer);
+                    resizeTimer = window.setTimeout(() => runResponsiveLayout(), 160);
+                });
+
+                applyResponsiveGraphStyles(profile);
+                setTimeout(() => adjustSpecialPositions(cy, profile), 120);
 
                 cy.on('tap', 'node', async function(evt) {
                     const node = evt.target;
@@ -681,6 +943,7 @@
                 applyThemeToGraph(activeTheme);
 
                 window.applyThemeToGraph = applyThemeToGraph;
+                window.runResponsiveLayout = runResponsiveLayout;
 
             } catch (error) {
                 console.error('Error loading data.json:', error);
