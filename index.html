@@ -586,7 +586,7 @@
         // --- Config ---
         const nodeColors = {
             chromium: '#38bdf8', chrome: '#38bdf8', brave: '#38bdf8',
-            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8', thorium: '#38bdf8',
+            edge: '#38bdf8', opera: '#38bdf8', vivaldi: '#38bdf8', thorium: '#38bdf8', helium: '#38bdf8', yandex: '#38bdf8', comet: '#38bdf8',
             ungoogled: '#38bdf8', bromite: '#38bdf8', cromite: '#38bdf8', arc: '#38bdf8', kiwi: '#38bdf8', min: '#38bdf8', samsung: '#38bdf8', blink: '#38bdf8',
             gecko: '#a78bfa', firefox: '#a78bfa', tor: '#a78bfa',
             librewolf: '#a78bfa', mullvad: '#a78bfa', palemoon: '#a78bfa', basilisk: '#a78bfa', zen: '#a78bfa', floorp: '#a78bfa', iceweasel: '#a78bfa', icecat: '#a78bfa', waterfox: '#a78bfa',
@@ -599,7 +599,7 @@
 
         const engineLabels = {
             chromium: 'Blink', chrome: 'Blink', brave: 'Blink',
-            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink', thorium: 'Blink',
+            edge: 'Blink', opera: 'Blink', vivaldi: 'Blink', thorium: 'Blink', helium: 'Blink', yandex: 'Blink', comet: 'Blink',
             ungoogled: 'Blink', bromite: 'Blink', cromite: 'Blink', arc: 'Blink', kiwi: 'Blink', min: 'Blink', samsung: 'Blink', blink: 'Blink engine',
             gecko: 'Gecko engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', basilisk: 'Goanna', zen: 'Gecko', floorp: 'Gecko', iceweasel: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
@@ -674,7 +674,7 @@
         }
 
         function getLegendGroup(nodeId) {
-            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
+            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'helium', 'yandex', 'comet', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
             if (['firefox', 'tor', 'librewolf', 'mullvad', 'palemoon', 'basilisk', 'zen', 'floorp', 'iceweasel', 'icecat', 'waterfox', 'gecko'].includes(nodeId)) return 'gecko';
             if (['webkit', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
             if (['presto', 'opera-presto'].includes(nodeId)) return 'presto';
@@ -779,6 +779,9 @@
                 basilisk: { currentVersion: 'Unknown', eol: 'Unknown' },
                 samsung: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 thorium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                helium: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                yandex: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
+                comet: { currentVersion: 'Stable channel (rolling)', eol: 'Active' },
                 'android-webview': { currentVersion: 'Tracks Chromium stable', eol: 'Active' },
                 'ios-wkwebview': { currentVersion: 'Tracks iOS release', eol: 'Active' },
                 'windows-webview2': { currentVersion: 'Evergreen runtime', eol: 'Active' },

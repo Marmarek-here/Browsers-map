@@ -361,6 +361,34 @@
     },
     {
       "data": {
+        "id": "helium",
+        "label": "Helium",
+        "wiki": "",
+        "url": "https://helium.computer",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://helium.computer",
+        "noWiki": true,
+        "wikiNote": "Helium is a Chromium-based browser focused on privacy and performance, with a lightweight interface and modern web compatibility.",
+        "author": "Helium team",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
+      }
+    },
+    {
+      "data": {
+        "id": "yandex",
+        "label": "Yandex Browser",
+        "wiki": "Yandex_Browser",
+        "url": "https://browser.yandex.com",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://browser.yandex.com",
+        "author": "Yandex",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
+      }
+    },
+    {
+      "data": {
         "id": "chrome",
         "label": "Google Chrome",
         "wiki": "Google_Chrome",
@@ -432,6 +460,21 @@
         "url": "https://arc.net",
         "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://arc.net",
         "author": "The Browser Company",
+        "currentVersion": "Stable channel (rolling)",
+        "eol": "Active",
+        "versionSource": "Project docs / manual tracking"
+      }
+    },
+    {
+      "data": {
+        "id": "comet",
+        "label": "Comet",
+        "wiki": "",
+        "url": "https://www.perplexity.ai/comet",
+        "logo": "https://www.google.com/s2/favicons?sz=256&domain_url=https://www.perplexity.ai/comet",
+        "noWiki": true,
+        "wikiNote": "Comet is an AI-first browser experience introduced by Perplexity and positioned as a modern workflow browser built on Chromium foundations.",
+        "author": "Perplexity",
         "currentVersion": "Stable channel (rolling)",
         "eol": "Active",
         "versionSource": "Project docs / manual tracking"
@@ -814,6 +857,18 @@
     {
       "data": {
         "source": "chromium",
+        "target": "helium"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
+        "target": "yandex"
+      }
+    },
+    {
+      "data": {
+        "source": "chromium",
         "target": "chrome"
       }
     },
@@ -845,6 +900,12 @@
       "data": {
         "source": "chromium",
         "target": "arc"
+      }
+    },
+    {
+      "data": {
+        "source": "arc",
+        "target": "comet"
       }
     },
     {
