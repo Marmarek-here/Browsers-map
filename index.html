@@ -599,7 +599,8 @@
             goanna: '#ec4899', palemoon: '#ec4899', basilisk: '#ec4899',
             presto: '#ef4444', 'opera-presto': '#ef4444',
             netscape: '#d97706', mosaic: '#d97706',
-            webkit: '#34d399', helium: '#34d399', safari: '#34d399', konqueror: '#34d399', khtml: '#34d399', 'ios-wkwebview': '#34d399', 'macos-webview': '#34d399',
+            webkit: '#34d399', safari: '#34d399', khtml: '#34d399', 'ios-wkwebview': '#34d399', 'macos-webview': '#34d399',
+            helium: '#38bdf8', konqueror: '#f59e0b',
             ladybird: '#f59e0b', netsurf: '#f59e0b', flow: '#f59e0b', dillo: '#f59e0b',
             ie: '#fb923c', trident: '#fb923c', edgehtml: '#fb923c', 'edge-legacy': '#fb923c', 'windows-webbrowser': '#fb923c', 'windows-webview2': '#38bdf8',
             'android-webview': '#38bdf8',
@@ -612,7 +613,7 @@
             gecko: 'Gecko engine', goanna: 'Goanna engine', firefox: 'Gecko', tor: 'Gecko',
             librewolf: 'Gecko', mullvad: 'Gecko', palemoon: 'Goanna', basilisk: 'Goanna', zen: 'Gecko', floorp: 'Gecko', iceweasel: 'Gecko', icecat: 'Gecko', waterfox: 'Gecko',
             netscape: 'Mosaic lineage',
-            webkit: 'WebKit engine', helium: 'WebKit', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine', 'ios-wkwebview': 'WebKit', 'macos-webview': 'WebKit',
+            webkit: 'WebKit engine', helium: 'Blink', safari: 'WebKit', konqueror: 'KHTML', khtml: 'KHTML engine', 'ios-wkwebview': 'WebKit', 'macos-webview': 'WebKit',
             'android-webview': 'Blink',
             presto: 'Presto engine', 'opera-presto': 'Presto', ladybird: 'LibWeb', netsurf: 'NetSurf', flow: 'Flow', dillo: 'Dillo',
             mosaic: 'NCSA Mosaic', ie: 'Trident', trident: 'Trident engine', edgehtml: 'EdgeHTML engine', 'edge-legacy': 'EdgeHTML', 'windows-webbrowser': 'Trident',
@@ -692,10 +693,10 @@
         }
 
         function getLegendGroup(nodeId) {
-            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'yandex', 'comet', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2'].includes(nodeId)) return 'blink';
+            if (['chromium', 'chrome', 'brave', 'edge', 'opera', 'vivaldi', 'thorium', 'yandex', 'comet', 'arc', 'kiwi', 'min', 'samsung', 'ungoogled', 'bromite', 'cromite', 'android-webview', 'blink', 'windows-webview2', 'helium'].includes(nodeId)) return 'blink';
             if (['goanna', 'palemoon', 'basilisk'].includes(nodeId)) return 'goanna';
             if (['firefox', 'tor', 'librewolf', 'mullvad', 'zen', 'floorp', 'iceweasel', 'icecat', 'waterfox', 'gecko'].includes(nodeId)) return 'gecko';
-            if (['webkit', 'helium', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
+            if (['webkit', 'safari', 'konqueror', 'khtml', 'ios-wkwebview', 'macos-webview'].includes(nodeId)) return 'webkit';
             if (['presto', 'opera-presto'].includes(nodeId)) return 'presto';
             if (['mosaic', 'netscape'].includes(nodeId)) return 'mosaic';
             if (['ie', 'trident', 'edgehtml', 'edge-legacy', 'windows-webbrowser'].includes(nodeId)) return 'legacy';
@@ -722,6 +723,9 @@
 
         let cyRef = null;
         let pinnedNodeId = null;
+        let hoverNodeId = null;
+        let elevationRaf = 0;
+        let lastElevatedState = '';
 
         function toggleMobileLegend() {
             document.getElementById('legend').classList.toggle('collapsed');
@@ -872,6 +876,12 @@
                 sidebar.classList.remove('sidebar-closing');
             }, 220);
             pinnedNodeId = null;
+            hoverNodeId = null;
+            lastElevatedState = '';
+            if (elevationRaf) {
+                cancelAnimationFrame(elevationRaf);
+                elevationRaf = 0;
+            }
             if (cyRef) {
                 cyRef.batch(() => {
                     cyRef.nodes().removeClass('node-hover node-upper');
@@ -1080,15 +1090,34 @@
                 cyRef = cy;
 
                 function updateNodeElevation(hoveredNode = null) {
+                    const hoveredNodeId = hoveredNode ? hoveredNode.id() : null;
+                    const effectiveHoverId = (hoveredNodeId && hoveredNodeId !== pinnedNodeId) ? hoveredNodeId : null;
+                    const nextState = `${pinnedNodeId || ''}|${effectiveHoverId || ''}`;
+                    if (nextState === lastElevatedState) return;
+                    lastElevatedState = nextState;
+
                     cy.batch(() => {
-                        cy.nodes().removeClass('node-hover node-upper');
-                        if (hoveredNode && (!pinnedNodeId || hoveredNode.id() !== pinnedNodeId)) {
-                            hoveredNode.addClass('node-hover');
+                        cy.nodes('.node-hover').removeClass('node-hover');
+                        cy.nodes('.node-upper').removeClass('node-upper');
+
+                        if (effectiveHoverId) {
+                            const hovered = cy.getElementById(effectiveHoverId);
+                            if (hovered.length) hovered.addClass('node-hover');
                         }
                         if (pinnedNodeId) {
                             const pinned = cy.getElementById(pinnedNodeId);
                             if (pinned.length) pinned.addClass('node-upper');
                         }
+                    });
+                }
+
+                function scheduleNodeElevation(hoveredNode = null) {
+                    hoverNodeId = hoveredNode ? hoveredNode.id() : null;
+                    if (elevationRaf) return;
+                    elevationRaf = requestAnimationFrame(() => {
+                        elevationRaf = 0;
+                        const nextHover = hoverNodeId ? cy.getElementById(hoverNodeId) : null;
+                        updateNodeElevation(nextHover && nextHover.length ? nextHover : null);
                     });
                 }
 
@@ -1201,11 +1230,11 @@
 
                 cy.on('mouseover', 'node', function(evt) {
                     if (getViewportProfile() === 'mobile') return;
-                    updateNodeElevation(evt.target);
+                    scheduleNodeElevation(evt.target);
                 });
                 cy.on('mouseout', 'node', function() {
                     if (getViewportProfile() === 'mobile') return;
-                    updateNodeElevation(null);
+                    scheduleNodeElevation(null);
                 });
 
                 cy.on('tap', 'node', async function(evt) {
@@ -1221,7 +1250,7 @@
                     const alreadyOpen = sidebar.style.display === 'flex';
                     sidebar.style.display = 'flex';
                     pinnedNodeId = nd.id;
-                    updateNodeElevation(null);
+                    scheduleNodeElevation(null);
                     if (!alreadyOpen) {
                         sidebar.classList.remove('sidebar-open');
                         sidebar.classList.remove('sidebar-closing');
